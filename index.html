@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RootSMP | Türkiye'nin En Efsanevi Survival Sunucusu</title>
+    <title>Lumorarr Network | Türkiye'nin En Efsanevi Survival Sunucusu</title>
     <!-- Tailwind CSS ve FontAwesome İkon Kütüphanesi -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,19 +22,19 @@
                     },
                     colors: {
                         brand: {
-                            50: '#fff5f5',
-                            100: '#ffe3e3',
-                            500: '#ff4757',
-                            600: '#e84118',
-                            900: '#c23616',
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            500: '#8b5cf6', /* Lumorarr için asil violet rengi */
+                            600: '#7c3aed',
+                            900: '#5b21b6',
                         },
                         dark: {
-                            base: '#0f1115',
-                            card: '#181a21',
-                            lighter: '#242731',
-                            border: '#2f3442'
+                            base: '#0b0c10',
+                            card: '#12131c',
+                            lighter: '#1a1c29',
+                            border: '#25283b'
                         },
-                        accent: '#ffa502'
+                        accent: '#00f0ff' /* Eşsiz parlayan turkuaz tonu */
                     }
                 }
             }
@@ -43,38 +43,38 @@
 
     <style>
         body {
-            background-color: #0f1115;
+            background-color: #0b0c10;
             color: #ffffff;
             scrollbar-width: thin;
-            scrollbar-color: #ff4757 #181a21;
+            scrollbar-color: #8b5cf6 #12131c;
         }
         
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #181a21;
+            background: #12131c;
         }
         ::-webkit-scrollbar-thumb {
-            background: #ff4757;
+            background: #8b5cf6;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #e84118;
+            background: #7c3aed;
         }
 
-        .neon-glow-red {
-            box-shadow: 0 0 20px rgba(255, 71, 87, 0.45);
+        .neon-glow-brand {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.45);
         }
-        .neon-text-red {
-            text-shadow: 0 0 10px rgba(255, 71, 87, 0.6);
+        .neon-text-brand {
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
         }
         .neon-glow-accent {
-            box-shadow: 0 0 20px rgba(255, 165, 2, 0.4);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
         }
 
         .hero-bg {
-            background: linear-gradient(rgba(15, 17, 21, 0.85), rgba(15, 17, 21, 1)), 
+            background: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 1)), 
                         url('https://images.unsplash.com/photo-1607988795691-3d0147b43231?q=80&w=1920') no-repeat center center/cover;
         }
     </style>
@@ -84,10 +84,10 @@
     <!-- Üst Menü (Navbar) -->
     <nav class="fixed top-0 left-0 w-full z-50 bg-dark-base/90 backdrop-blur-md border-b border-dark-border transition-all duration-300 py-4 px-6 md:px-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center font-poppins font-black text-xl text-white tracking-wider neon-glow-red">
-                R
+            <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center font-poppins font-black text-xl text-white tracking-wider neon-glow-brand">
+                L
             </div>
-            <span class="font-poppins font-black text-2xl tracking-tight text-white">ROOT<span class="text-brand-500">SMP</span></span>
+            <span class="font-poppins font-black text-2xl tracking-tight text-white">LUMORARR<span class="text-brand-500">NETWORK</span></span>
         </div>
         
         <!-- Desktop Menü Linkleri -->
@@ -100,7 +100,7 @@
         <!-- Yönetim Paneli Butonu -->
         <div class="flex items-center gap-4">
             <button onclick="openAdminLoginModal()" class="px-5 py-2.5 rounded-lg bg-dark-lighter border border-dark-border hover:border-brand-500 font-bold text-sm tracking-wide text-white transition-all duration-300">
-                <i class="fa-solid fa-lock-open mr-2 text-brand-500"></i>Yönetim Paneli
+                <i class="fa-solid fa-lock-open mr-2 text-brand-500"></i>Yönetici Paneli
             </button>
             <!-- Mobil Menü Tetikleyici -->
             <button onclick="toggleMobileMenu()" class="md:hidden text-white hover:text-brand-500 focus:outline-none text-2xl">
@@ -117,7 +117,7 @@
         <a href="#home" onclick="toggleMobileMenu()" class="text-2xl font-bold hover:text-brand-500 transition-colors">Ana Sayfa</a>
         <a href="#register-section" onclick="toggleMobileMenu()" class="text-2xl font-bold hover:text-brand-500 transition-colors">Kayıt Ol</a>
         <a href="#features" onclick="toggleMobileMenu()" class="text-2xl font-bold hover:text-brand-500 transition-colors">Özellikler</a>
-        <button onclick="toggleMobileMenu(); openAdminLoginModal()" class="px-8 py-3.5 rounded-xl bg-brand-500 font-bold text-white text-lg">Yönetim Paneli</button>
+        <button onclick="toggleMobileMenu(); openAdminLoginModal()" class="px-8 py-3.5 rounded-xl bg-brand-500 font-bold text-white text-lg">Yönetici Paneli</button>
     </div>
 
     <!-- Kahraman Alanı (Hero) -->
@@ -129,36 +129,30 @@
         </div>
 
         <h1 class="font-poppins font-black text-4xl sm:text-6xl md:text-7xl tracking-tight leading-tight max-w-5xl mb-6">
-            Türkiye'nin En Efsanevi <span class="text-brand-500 neon-text-red">SMP Deneyimi</span>
+            Türkiye'nin En Efsanevi <span class="text-brand-500 neon-text-brand">Survival Serüveni</span>
         </h1>
         
         <p class="text-gray-300 text-lg md:text-xl max-w-3xl mb-10 leading-relaxed font-light">
             Gelişmiş klan savaşları, adil ekonomi sistemleri, kesintisiz 20 TPS performans ve her an yardıma hazır aktif yetkili kadrosuyla gerçek Minecraft kalitesini yaşa!
         </p>
 
-        <!-- IP Kopyalama ve Hızlı Başlangıç -->
-        <div class="flex flex-col sm:flex-row gap-4 items-center justify-center w-full max-w-lg mb-12">
+        <!-- IP Kopyalama (Merkezi Tasarım - Discord Yok) -->
+        <div class="w-full max-w-md mb-12">
             <!-- IP Kutusu (Tıklanınca Kopyalar) -->
-            <div onclick="copyIPAddress()" class="w-full sm:flex-1 bg-dark-card border-2 border-brand-500 hover:bg-brand-500/10 rounded-2xl p-4 flex items-center justify-between cursor-pointer transition-all duration-300 group hover:-translate-y-1 shadow-lg hover:shadow-brand-500/15">
+            <div onclick="copyIPAddress()" class="w-full bg-dark-card border-2 border-brand-500 hover:bg-brand-500/10 rounded-2xl p-5 flex items-center justify-between cursor-pointer transition-all duration-300 group hover:-translate-y-1 shadow-lg hover:shadow-brand-500/15">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-500 flex items-center justify-center text-lg">
+                    <div class="w-12 h-12 rounded-xl bg-brand-500/20 text-brand-500 flex items-center justify-center text-xl">
                         <i class="fa-solid fa-server"></i>
                     </div>
                     <div class="text-left">
                         <div class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">Sunucu IP Adresi</div>
-                        <div id="ipText" class="font-mono font-bold text-white tracking-wide">rootsmp.mcsh.io</div>
+                        <div id="ipText" class="font-mono font-bold text-white tracking-wide">Lumorarrnw.aternos.me</div>
                     </div>
                 </div>
-                <div class="w-8 h-8 rounded-lg bg-dark-lighter flex items-center justify-center text-gray-400 group-hover:text-brand-500 transition-colors">
-                    <i id="copyIcon" class="fa-regular fa-clone"></i>
+                <div class="w-10 h-10 rounded-lg bg-dark-lighter flex items-center justify-center text-gray-400 group-hover:text-brand-500 transition-colors">
+                    <i id="copyIcon" class="fa-regular fa-clone text-lg"></i>
                 </div>
             </div>
-            
-            <!-- Discord Katıl Butonu -->
-            <a href="https://discord.gg/UmAtdm77kw" target="_blank" class="w-full sm:w-auto px-8 py-5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold tracking-wide flex items-center justify-center gap-3 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-indigo-600/20">
-                <i class="fa-brands fa-discord text-xl"></i>
-                Discord'a Katıl
-            </a>
         </div>
     </section>
 
@@ -182,7 +176,7 @@
                             <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-500">
                                 <i class="fa-solid fa-user"></i>
                             </span>
-                            <input type="text" id="playerUsernameInput" placeholder="Örn: ProOyuncu_99" class="w-full bg-dark-lighter border border-dark-border rounded-xl pl-11 pr-4 py-4 text-sm text-white focus:outline-none focus:border-brand-500 transition-colors placeholder:text-gray-600">
+                            <input type="text" id="playerUsernameInput" placeholder="Örn: LumorarrPro_1" class="w-full bg-dark-lighter border border-dark-border rounded-xl pl-11 pr-4 py-4 text-sm text-white focus:outline-none focus:border-brand-500 transition-colors placeholder:text-gray-600">
                         </div>
                     </div>
 
@@ -190,7 +184,7 @@
                         <i class="fa-solid fa-arrow-right-to-bracket"></i> Sunucuya Kaydol
                     </button>
                     
-                    <p class="text-center text-[11px] text-gray-500">Kaydolduktan sonra <code class="bg-dark-lighter px-1.5 py-0.5 rounded text-brand-500">rootsmp.mcsh.io</code> adresiyle hemen giriş yapabilirsin.</p>
+                    <p class="text-center text-[11px] text-gray-500">Kaydolduktan sonra <code class="bg-dark-lighter px-1.5 py-0.5 rounded text-brand-500">Lumorarrnw.aternos.me</code> adresiyle hemen giriş yapabilirsin.</p>
                 </div>
 
                 <!-- Girişler KAPALI Modeli -->
@@ -199,10 +193,7 @@
                         <i class="fa-solid fa-circle-xmark"></i>
                     </div>
                     <h3 class="text-xl font-bold font-poppins text-white">Girişler/Kayıtlar Kapalı</h3>
-                    <p class="text-gray-400 text-sm max-w-md mx-auto">Yeni oyuncu kayıtları yönetim ekibi tarafından geçici bir süreliğine durdurulmuştur. Lütfen daha sonra tekrar deneyin veya Discord üzerinden bilgi alın.</p>
-                    <a href="https://discord.gg/UmAtdm77kw" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-indigo-400 hover:text-indigo-300">
-                        <i class="fa-brands fa-discord"></i> Discord Sunucumuzdan Destek Al
-                    </a>
+                    <p class="text-gray-400 text-sm max-w-md mx-auto">Yeni oyuncu kayıtları yönetim ekibi tarafından geçici bir süreliğine durdurulmuştur. Lütfen daha sonra tekrar deneyin.</p>
                 </div>
 
             </div>
@@ -213,9 +204,9 @@
     <section id="features" class="py-24 px-6 md:px-16 bg-dark-base relative">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <div class="text-xs text-brand-500 font-bold tracking-widest uppercase mb-2">RootSMP Farkı</div>
+                <div class="text-xs text-brand-500 font-bold tracking-widest uppercase mb-2">Lumorarr Farkı</div>
                 <h2 class="font-poppins font-extrabold text-3xl md:text-5xl text-white">Eşsiz Bir Survival Macerası</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Sıradan SMP sunucularından sıkıldınız mı? RootSMP'de her mekanik oyuncu odaklı ve kusursuz tasarlandı.</p>
+                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Sıradan sunuculardan sıkıldınız mı? Lumorarr'da her mekanik oyuncu odaklı ve kusursuz tasarlandı.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -224,26 +215,26 @@
                     <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <h3 class="font-poppins font-bold text-xl text-white mb-3">Güçlü Anti-Cheat</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">Hiçbir hileciye göz açtırmıyoruz! En güncel hile koruma modüllerimizle tüm emekleriniz tam koruma altında.</p>
+                    <h3 class="font-poppins font-bold text-xl text-white mb-3">Güçlü Koruma</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">Hiçbir hileciye veya adil olmayan avantaja göz açtırmıyoruz! Tüm emekleriniz tam koruma altında.</p>
                 </div>
 
                 <!-- Kart 2 -->
                 <div class="bg-dark-card border border-dark-border hover:border-brand-500/40 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-500/5 group">
-                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-coins"></i>
                     </div>
                     <h3 class="font-poppins font-bold text-xl text-white mb-3">Dengeli Ekonomi</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">Tamamen dinamik, oyuncuların belirlediği pazar (Aksiyon) sistemleri. Ticaret yap, paranı katla ve krallığı yönet.</p>
+                    <p class="text-gray-400 leading-relaxed text-sm">Tamamen dinamik, oyuncuların yönlendirdiği ticaret ve pazar sistemleri. Kazancını katla, liderliğe oyna.</p>
                 </div>
 
                 <!-- Kart 3 -->
                 <div class="bg-dark-card border border-dark-border hover:border-brand-500/40 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-500/5 group">
-                    <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
                     </div>
-                    <h3 class="font-poppins font-bold text-xl text-white mb-3">Kozmetikler & Sistemler</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">Sunucuya özel parlayan kanatlar, evcil hayvanlar, rütbe yükseltmeleri ve daha fazlasıyla tarzını herkese göster.</p>
+                    <h3 class="font-poppins font-bold text-xl text-white mb-3">Sıfır Donma & Lag</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">Optimize edilmiş sunucu altyapımızla kesintisiz, akıcı ve yüksek TPS değerli oyun deneyiminin keyfini sürün.</p>
                 </div>
             </div>
         </div>
@@ -253,11 +244,10 @@
     <footer class="bg-dark-base border-t border-dark-border py-12 px-6 text-center text-gray-500 text-sm">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center gap-3">
-                <span class="font-poppins font-black text-xl tracking-tight text-white">ROOT<span class="text-brand-500">SMP</span></span>
+                <span class="font-poppins font-black text-xl tracking-tight text-white">LUMORARR<span class="text-brand-500">NETWORK</span></span>
             </div>
-            <p>&copy; 2026 RootSMP. Tüm Hakları Saklıdır. Mojang AB ile resmi olarak hiçbir ilişiğimiz bulunmamaktadır.</p>
+            <p>&copy; 2026 Lumorarr Network. Tüm Hakları Saklıdır. Mojang AB ile resmi olarak hiçbir ilişiğimiz bulunmamaktadır.</p>
             <div class="flex items-center gap-4 text-lg">
-                <a href="https://discord.gg/UmAtdm77kw" target="_blank" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-discord"></i></a>
                 <a href="#" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-youtube"></i></a>
                 <a href="#" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-instagram"></i></a>
             </div>
@@ -304,7 +294,7 @@
                     <i class="fa-solid fa-gears animate-spin"></i>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold font-poppins text-white">RootSMP Kontrol Paneli</h3>
+                    <h3 class="text-xl font-bold font-poppins text-white">Lumorarr Kontrol Paneli</h3>
                     <p class="text-gray-400 text-xs">Sistem Ayarları ve Oyuncu Yönetimi</p>
                 </div>
             </div>
@@ -382,18 +372,18 @@
         // Uygulama Başlangıcı
         function initApp() {
             // LocalStorage'dan kayıtları çek
-            const savedPlayers = localStorage.getItem('rootsmp_players');
+            const savedPlayers = localStorage.getItem('lumorarr_players');
             if (savedPlayers) {
                 state.players = JSON.parse(savedPlayers);
             } else {
-                localStorage.setItem('rootsmp_players', JSON.stringify(state.players));
+                localStorage.setItem('lumorarr_players', JSON.stringify(state.players));
             }
 
-            const savedStatus = localStorage.getItem('rootsmp_reg_status');
+            const savedStatus = localStorage.getItem('lumorarr_reg_status');
             if (savedStatus !== null) {
                 state.regOpen = JSON.parse(savedStatus);
             } else {
-                localStorage.setItem('rootsmp_reg_status', JSON.stringify(state.regOpen));
+                localStorage.setItem('lumorarr_reg_status', JSON.stringify(state.regOpen));
             }
 
             renderRegistrationUI();
@@ -436,7 +426,7 @@
                 return;
             }
 
-            // Türkçe karakter/boşluk kontrolü (Minecraft adı standartlarına uygunluk için isteğe bağlı)
+            // Türkçe karakter/boşluk kontrolü
             if (username.includes(" ") || username.length < 3) {
                 showToast("Hata", "Kullanıcı adı en az 3 karakter olmalı ve boşluk içermemelidir.", false);
                 return;
@@ -451,7 +441,7 @@
 
             // Listeye Ekle ve Kaydet
             state.players.push(username);
-            localStorage.setItem('rootsmp_players', JSON.stringify(state.players));
+            localStorage.setItem('lumorarr_players', JSON.stringify(state.players));
             
             showToast("Kayıt Başarılı!", `${username} başarıyla whitelist listesine eklendi. İyi oyunlar!`, true);
             input.value = "";
@@ -466,7 +456,7 @@
 
         // IP Kopyalama Fonksiyonu
         function copyIPAddress() {
-            const ip = "rootsmp.mcsh.io";
+            const ip = "Lumorarrnw.aternos.me";
             const textArea = document.createElement("textarea");
             textArea.value = ip;
             textArea.style.position = "fixed";  
@@ -477,9 +467,9 @@
             try {
                 document.execCommand('copy');
                 const copyIcon = document.getElementById('copyIcon');
-                copyIcon.className = "fa-solid fa-circle-check text-green-500";
+                copyIcon.className = "fa-solid fa-circle-check text-green-400";
                 
-                showToast("Kopyalandı!", "rootsmp.mcsh.io başarıyla panoya kopyalandı.", true);
+                showToast("Kopyalandı!", "Lumorarrnw.aternos.me başarıyla panoya kopyalandı.", true);
                 
                 setTimeout(() => {
                     copyIcon.className = "fa-regular fa-clone";
@@ -528,7 +518,7 @@
         // Şifre Giriş Kontrolü
         function handleAdminLogin() {
             const passwordInput = document.getElementById('adminPasswordInput').value;
-            const correctPassword = "root7000112242sd"; // Görseldeki şifre
+            const correctPassword = "lumorrarsmpcracked32134"; // Yeni Belirlenen Şifre
 
             if (passwordInput === correctPassword) {
                 closeAdminLoginModal();
@@ -553,7 +543,7 @@
         // Kayıt Durumu Değiştirme (Aç/Kapat)
         function toggleRegistrationStatus() {
             state.regOpen = !state.regOpen;
-            localStorage.setItem('rootsmp_reg_status', JSON.stringify(state.regOpen));
+            localStorage.setItem('lumorarr_reg_status', JSON.stringify(state.regOpen));
             updateAdminPanelStatusButton();
             renderRegistrationUI();
             
@@ -587,7 +577,7 @@
                 playerRow.className = "flex items-center justify-between bg-dark-lighter p-2.5 rounded-lg border border-dark-border";
                 playerRow.innerHTML = `
                     <div class="flex items-center gap-2">
-                        <img src="https://minotar.net/avatar/${player}/24" class="w-6 h-6 rounded" onerror="this.src='https://placehold.co/24x24/1e2124/ffffff?text=P'">
+                        <img src="https://minotar.net/avatar/${player}/24" class="w-6 h-6 rounded" onerror="this.src='https://placehold.co/24x24/1a1c29/ffffff?text=P'">
                         <span class="text-xs font-mono text-white">${player}</span>
                     </div>
                     <button onclick="handleDeletePlayer('${player}')" class="text-gray-500 hover:text-brand-500 text-xs px-2 py-1 transition-colors">
@@ -615,7 +605,7 @@
             }
 
             state.players.push(username);
-            localStorage.setItem('rootsmp_players', JSON.stringify(state.players));
+            localStorage.setItem('lumorarr_players', JSON.stringify(state.players));
             input.value = "";
             
             renderAdminPlayerList();
@@ -625,7 +615,7 @@
         // Admin Tarafından Oyuncu Silme
         function handleDeletePlayer(username) {
             state.players = state.players.filter(p => p !== username);
-            localStorage.setItem('rootsmp_players', JSON.stringify(state.players));
+            localStorage.setItem('lumorarr_players', JSON.stringify(state.players));
             
             renderAdminPlayerList();
             showToast("Silindi", `${username} listeden kaldırıldı.`, true);
