@@ -60,7 +60,6 @@
         
         <ul class="hidden md:flex items-center gap-8 font-semibold text-gray-300">
             <li><a href="#home" class="hover:text-brand-500 transition-colors">Ana Sayfa</a></li>
-            <li><a href="#register-section" class="hover:text-brand-500 transition-colors">Kayıt Ol</a></li>
             <li><a href="#features" class="hover:text-brand-500 transition-colors">Özellikler</a></li>
             <li><a href="#staff-recruitment" class="hover:text-brand-500 transition-colors">Yetkili Alımı</a></li>
             <li><a href="#support-section" class="hover:text-brand-500 transition-colors">Destek</a></li>
@@ -86,6 +85,30 @@
                 </div>
             </div>
             <i id="copyIcon" class="fa-regular fa-clone text-gray-400"></i>
+        </div>
+    </section>
+
+    <!-- ÖZELLİKLER BÖLÜMÜ -->
+    <section id="features" class="py-20 px-6 md:px-16 bg-dark-base">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-center font-poppins font-extrabold text-3xl md:text-4xl text-white mb-16">Neden Biz?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500 transition-all">
+                    <div class="w-12 h-12 bg-brand-500/10 text-brand-500 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-bolt"></i></div>
+                    <h3 class="text-xl font-bold mb-3">20 TPS Performans</h3>
+                    <p class="text-gray-400 text-sm">Kesintisiz ve lag sorunu olmayan, en yüksek optimize edilmiş survival deneyimi.</p>
+                </div>
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500 transition-all">
+                    <div class="w-12 h-12 bg-brand-500/10 text-brand-500 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Gelişmiş Klanlar</h3>
+                    <p class="text-gray-400 text-sm">Arkadaşlarınla birleş, bölgeni koru ve rakiplerini eleyerek zirveye ulaş.</p>
+                </div>
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500 transition-all">
+                    <div class="w-12 h-12 bg-brand-500/10 text-brand-500 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-headset"></i></div>
+                    <h3 class="text-xl font-bold mb-3">Hızlı Destek</h3>
+                    <p class="text-gray-400 text-sm">Sorunlarını bildirmek için gelişmiş ticket sistemi ve aktif moderasyon ekibi.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -236,21 +259,33 @@
             
             state.tickets.forEach(t => {
                 const repliesHtml = (t.replies || []).map(r => `
-                    <div class="mt-2 p-2 bg-dark-base rounded text-[10px] border-l-2 border-brand-500">
-                        <span class="text-brand-500 font-bold">[Kurucu] Lumorarr:</span> ${r}
+                    <div class="mt-2 p-3 bg-dark-base rounded-lg border border-brand-500/20 text-xs">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[10px] bg-brand-500 text-white px-1.5 py-0.5 rounded">Kurucu</span>
+                            <span class="font-bold text-brand-500">Lumorarr</span>
+                        </div>
+                        <p class="text-white">${r}</p>
                     </div>
                 `).join('');
 
                 ticketList.innerHTML += `
-                    <div class="bg-dark-lighter p-3 rounded-lg border border-dark-border text-xs mb-3">
-                        <div class="flex justify-between font-bold text-brand-500">${t.subject} <small class="text-gray-500">${t.cat}</small></div>
-                        <p class="text-gray-300 mt-1">${t.msg}</p>
-                        ${repliesHtml}
-                        <div class="mt-3 flex gap-1">
-                            <input type="text" id="reply-${t.id}" placeholder="Cevap yaz..." class="flex-1 bg-dark-card border border-dark-border rounded px-2 py-1 text-white outline-none">
-                            <button onclick="replyToTicket(${t.id})" class="bg-brand-600 px-2 rounded text-white hover:bg-brand-500">Gönder</button>
+                    <div class="bg-dark-lighter p-4 rounded-xl border border-dark-border mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <span class="block text-[10px] text-gray-500 uppercase tracking-wider font-bold">${t.cat}</span>
+                                <span class="font-bold text-white">${t.subject}</span>
+                            </div>
+                            <span class="text-[10px] text-gray-400">${new Date(t.id).toLocaleDateString()}</span>
                         </div>
-                        <button onclick="deleteTicket(${t.id})" class="mt-2 text-red-500 hover:underline">Sil</button>
+                        <p class="text-gray-300 text-sm mb-3 bg-dark-card p-2 rounded">${t.msg}</p>
+                        ${repliesHtml}
+                        <div class="mt-4 flex gap-2">
+                            <input type="text" id="reply-${t.id}" placeholder="Yanıt yaz..." class="flex-1 bg-dark-card border border-dark-border rounded-lg px-3 py-2 text-white text-sm outline-none focus:border-brand-500">
+                            <button onclick="replyToTicket(${t.id})" class="bg-brand-600 px-4 rounded-lg text-white font-bold hover:bg-brand-500 transition-colors">Gönder</button>
+                        </div>
+                        <button onclick="deleteTicket(${t.id})" class="mt-3 text-red-500 hover:text-red-400 text-xs flex items-center gap-1">
+                            <i class="fa-solid fa-trash"></i> Talebi Sil
+                        </button>
                     </div>
                 `;
             });
