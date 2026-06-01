@@ -235,54 +235,38 @@
             ticketList.innerHTML = state.tickets.length === 0 ? '<p class="text-xs text-gray-500">Ticket bulunmuyor.</p>' : '';
             
             state.tickets.forEach(t => {
+                const repliesHtml = (t.replies || []).map(r => `
+                    <div class="mt-2 p-2 bg-dark-base rounded text-[10px] border-l-2 border-brand-500">
+                        <span class="text-brand-500 font-bold">[Kurucu] Lumorarr:</span> ${r}
+                    </div>
+                `).join('');
+
                 ticketList.innerHTML += `
-                    <div class="bg-dark-lighter p-3 rounded-lg border border-dark-border text-xs">
+                    <div class="bg-dark-lighter p-3 rounded-lg border border-dark-border text-xs mb-3">
                         <div class="flex justify-between font-bold text-brand-500">${t.subject} <small class="text-gray-500">${t.cat}</small></div>
                         <p class="text-gray-300 mt-1">${t.msg}</p>
+                        ${repliesHtml}
+                        <div class="mt-3 flex gap-1">
+                            <input type="text" id="reply-${t.id}" placeholder="Cevap yaz..." class="flex-1 bg-dark-card border border-dark-border rounded px-2 py-1 text-white outline-none">
+                            <button onclick="replyToTicket(${t.id})" class="bg-brand-600 px-2 rounded text-white hover:bg-brand-500">Gönder</button>
+                        </div>
                         <button onclick="deleteTicket(${t.id})" class="mt-2 text-red-500 hover:underline">Sil</button>
                     </div>
                 `;
             });
-
-            const staffList = document.getElementById('admin-staff-list');
-            staffList.innerHTML = state.staffApps.length === 0 ? '<p class="text-xs text-gray-500">Başvuru yok.</p>' : '';
-            state.staffApps.forEach(s => {
-                staffList.innerHTML += `
-                    <div class="bg-dark-lighter p-3 rounded-lg border border-dark-border text-xs">
-                        <div class="font-bold text-accent">${s.name} (${s.age})</div>
-                        <p class="text-gray-300 mt-1">${s.reason}</p>
-                        <button onclick="deleteStaffApp(${s.id})" class="mt-2 text-red-500 hover:underline">Sil</button>
-                    </div>
-                `;
-            });
-
             renderAdminPlayerList();
         }
 
-        function deleteStaffApp(id) {
-            state.staffApps = state.staffApps.filter(s => s.id !== id);
-            localStorage.setItem('lumorarr_staff_apps', JSON.stringify(state.staffApps));
-            renderAdminPanel();
-        }
-
-        // ADMIN PANEL
-        function openAdminPanelModal() { document.getElementById('adminPanelModal').classList.remove('hidden'); renderAdminPanel(); }
-        function closeAdminPanelModal() { document.getElementById('adminPanelModal').classList.add('hidden'); }
-        
-        function renderAdminPanel() {
-            const ticketList = document.getElementById('admin-ticket-list');
-            ticketList.innerHTML = state.tickets.length === 0 ? '<p class="text-xs text-gray-500">Ticket bulunmuyor.</p>' : '';
+        function replyToTicket(id) {
+            const input = document.getElementById(`reply-${id}`);
+            if(!input.value) return;
             
-            state.tickets.forEach(t => {
-                ticketList.innerHTML += `
-                    <div class="bg-dark-lighter p-3 rounded-lg border border-dark-border text-xs">
-                        <div class="flex justify-between font-bold text-brand-500">${t.subject} <small class="text-gray-500">${t.cat}</small></div>
-                        <p class="text-gray-300 mt-1">${t.msg}</p>
-                        <button onclick="deleteTicket(${t.id})" class="mt-2 text-red-500 hover:underline">Sil</button>
-                    </div>
-                `;
-            });
-            renderAdminPlayerList();
+            const ticket = state.tickets.find(t => t.id === id);
+            if(!ticket.replies) ticket.replies = [];
+            
+            ticket.replies.push(input.value);
+            localStorage.setItem('lumorarr_tickets', JSON.stringify(state.tickets));
+            renderAdminPanel();
         }
 
         // --- EXISTING UTILS ---
