@@ -290,6 +290,7 @@
                 `;
             });
             renderAdminPlayerList();
+            renderAdminStaffList(); // Yeni eklenen satır
         }
 
         function replyToTicket(id) {
@@ -319,6 +320,28 @@
                     <button onclick="deletePlayer('${p}')" class="text-red-500">Sil</button>
                 </div>
             `).join('');
+        }
+
+        // --- YENİ EKLENEN: Başvuru Listeleme ---
+        function renderAdminStaffList() {
+            const staffList = document.getElementById('admin-staff-list');
+            staffList.innerHTML = state.staffApps.length === 0 ? '<p class="text-xs text-gray-500">Başvuru bulunmuyor.</p>' : '';
+            
+            state.staffApps.forEach(s => {
+                staffList.innerHTML += `
+                    <div class="bg-dark-lighter p-3 rounded-xl border border-dark-border mb-3 text-xs">
+                        <p class="font-bold text-white">${s.name} (${s.age} yaş)</p>
+                        <p class="text-gray-400 mt-1 truncate">${s.reason}</p>
+                        <button onclick="deleteStaffApp(${s.id})" class="mt-2 text-red-500 hover:text-red-400">Sil</button>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteStaffApp(id) {
+            state.staffApps = state.staffApps.filter(s => s.id !== id);
+            localStorage.setItem('lumorarr_staff_apps', JSON.stringify(state.staffApps));
+            renderAdminPanel();
         }
         
         function deletePlayer(p) { 
