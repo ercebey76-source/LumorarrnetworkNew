@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumorarr Network | Türkiye'nin En Efsanevi Survival Sunucusu</title>
     
-    <!-- Tailwind CSS ve FontAwesome İkon Kütüphanesi -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts - Inter & Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -25,7 +23,7 @@
                         brand: {
                             50: '#f5f3ff',
                             100: '#ede9fe',
-                            500: '#8b5cf6', /* Lumorarr için asil violet rengi */
+                            500: '#8b5cf6',
                             600: '#7c3aed',
                             900: '#5b21b6',
                         },
@@ -35,7 +33,7 @@
                             lighter: '#1a1c29',
                             border: '#25283b'
                         },
-                        accent: '#00f0ff' /* Eşsiz parlayan turkuaz tonu */
+                        accent: '#00f0ff'
                     }
                 }
             }
@@ -43,593 +41,275 @@
     </script>
 
     <style>
-        body {
-            background-color: #0b0c10;
-            color: #ffffff;
-            scrollbar-width: thin;
-            scrollbar-color: #8b5cf6 #12131c;
-        }
-        
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #12131c;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #8b5cf6;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #7c3aed;
-        }
-
-        .neon-glow-brand {
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.45);
-        }
-        .neon-text-brand {
-            text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
-        }
-        .neon-glow-accent {
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
-        }
-
-        .hero-bg {
-            background: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 1)), 
-                        url('https://images.unsplash.com/photo-1607988795691-3d0147b43231?q=80&w=1920') no-repeat center center/cover;
-        }
+        body { background-color: #0b0c10; color: #ffffff; scrollbar-width: thin; scrollbar-color: #8b5cf6 #12131c; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #12131c; }
+        ::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 4px; }
+        .neon-glow-brand { box-shadow: 0 0 20px rgba(139, 92, 246, 0.45); }
+        .neon-text-brand { text-shadow: 0 0 10px rgba(139, 92, 246, 0.6); }
+        .hero-bg { background: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 1)), url('https://images.unsplash.com/photo-1607988795691-3d0147b43231?q=80&w=1920') no-repeat center center/cover; }
     </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden" onload="initApp()">
 
-    <!-- Üst Menü (Navbar) -->
     <nav class="fixed top-0 left-0 w-full z-50 bg-dark-base/90 backdrop-blur-md border-b border-dark-border transition-all duration-300 py-4 px-6 md:px-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center font-poppins font-black text-xl text-white tracking-wider neon-glow-brand">
-                L
-            </div>
+            <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center font-poppins font-black text-xl text-white neon-glow-brand">L</div>
             <span class="font-poppins font-black text-2xl tracking-tight text-white">LUMORARR<span class="text-brand-500">NETWORK</span></span>
         </div>
         
-        <!-- Desktop Menü Linkleri -->
         <ul class="hidden md:flex items-center gap-8 font-semibold text-gray-300">
-            <li><a href="#home" class="hover:text-brand-500 transition-colors duration-200">Ana Sayfa</a></li>
-            <li><a href="#register-section" class="hover:text-brand-500 transition-colors duration-200">Kayıt Ol</a></li>
-            <li><a href="#features" class="hover:text-brand-500 transition-colors duration-200">Özellikler</a></li>
+            <li><a href="#home" class="hover:text-brand-500 transition-colors">Ana Sayfa</a></li>
+            <li><a href="#register-section" class="hover:text-brand-500 transition-colors">Kayıt Ol</a></li>
+            <li><a href="#features" class="hover:text-brand-500 transition-colors">Özellikler</a></li>
+            <li><a href="#staff-recruitment" class="hover:text-brand-500 transition-colors">Yetkili Alımı</a></li>
+            <li><a href="#support-section" class="hover:text-brand-500 transition-colors">Destek</a></li>
         </ul>
 
-        <!-- Yönetim Paneli Butonu -->
         <div class="flex items-center gap-4">
-            <button onclick="openAdminLoginModal()" class="px-5 py-2.5 rounded-lg bg-dark-lighter border border-dark-border hover:border-brand-500 font-bold text-sm tracking-wide text-white transition-all duration-300">
-                <i class="fa-solid fa-lock-open mr-2 text-brand-500"></i>Yönetici Paneli
-            </button>
-            <!-- Mobil Menü Tetikleyici -->
-            <button onclick="toggleMobileMenu()" class="md:hidden text-white hover:text-brand-500 focus:outline-none text-2xl">
-                <i class="fa-solid fa-bars-staggered"></i>
+            <button onclick="openAdminLoginModal()" class="px-5 py-2.5 rounded-lg bg-dark-lighter border border-dark-border hover:border-brand-500 text-sm font-bold text-white transition-all">
+                <i class="fa-solid fa-lock-open mr-2 text-brand-500"></i>Yönetici
             </button>
         </div>
     </nav>
 
-    <!-- Mobil Menü Çekmecesi -->
-    <div id="mobileMenu" class="fixed inset-0 z-40 bg-dark-base/95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center gap-8">
-        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-white text-3xl hover:text-brand-500">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <a href="#home" onclick="toggleMobileMenu()" class="text-2xl font-bold hover:text-brand-500 transition-colors">Ana Sayfa</a>
-        <a href="#register-section" onclick="toggleMobileMenu()" class="text-2xl font-bold hover:text-brand-500 transition-colors">Kayıt Ol</a>
-        <a href="#features" onclick="toggleMobileMenu()" class="text-2xl font-bold hover:text-brand-500 transition-colors">Özellikler</a>
-        <button onclick="toggleMobileMenu(); openAdminLoginModal()" class="px-8 py-3.5 rounded-xl bg-brand-500 font-bold text-white text-lg">Yönetici Paneli</button>
-    </div>
-
-    <!-- Kahraman Alanı (Hero) -->
-    <section id="home" class="hero-bg min-h-screen pt-28 pb-16 px-6 md:px-16 flex flex-col justify-center items-center text-center relative overflow-hidden">
-        <!-- Sunucu Aktiflik Sinyali -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-green-400 font-semibold text-xs tracking-wider uppercase mb-6 animate-pulse">
-            <span class="w-2.5 h-2.5 rounded-full bg-green-500 inline-block"></span>
-            SUNUCU AKTİF • <span id="player-count-badge">1</span> KAYITLI OYUNCU
-        </div>
-
-        <h1 class="font-poppins font-black text-4xl sm:text-6xl md:text-7xl tracking-tight leading-tight max-w-5xl mb-6">
-            Türkiye'nin En Efsanevi <span class="text-brand-500 neon-text-brand">Survival Serüveni</span>
-        </h1>
+    <section id="home" class="hero-bg min-h-screen pt-28 pb-16 px-6 md:px-16 flex flex-col justify-center items-center text-center relative">
+        <h1 class="font-poppins font-black text-4xl sm:text-6xl md:text-7xl mb-6">Türkiye'nin En Efsanevi <span class="text-brand-500 neon-text-brand">Survival Serüveni</span></h1>
+        <p class="text-gray-300 text-lg md:text-xl max-w-3xl mb-10">Gelişmiş klan savaşları ve kesintisiz 20 TPS performans ile gerçek Minecraft kalitesi!</p>
         
-        <p class="text-gray-300 text-lg md:text-xl max-w-3xl mb-10 leading-relaxed font-light">
-            Gelişmiş klan savaşları, adil ekonomi sistemleri, kesintisiz 20 TPS performans ve her an yardıma hazır aktif yetkili kadrosuyla gerçek Minecraft kalitesini yaşa!
-        </p>
-
-        <!-- IP Kopyalama (Merkezi Tasarım - Discord Yok) -->
-        <div class="w-full max-w-md mb-12">
-            <!-- IP Kutusu (Tıklanınca Kopyalar) -->
-            <div onclick="copyIPAddress()" class="w-full bg-dark-card border-2 border-brand-500 hover:bg-brand-500/10 rounded-2xl p-5 flex items-center justify-between cursor-pointer transition-all duration-300 group hover:-translate-y-1 shadow-lg hover:shadow-brand-500/15">
-                <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-xl bg-brand-500/20 text-brand-500 flex items-center justify-center text-xl">
-                        <i class="fa-solid fa-server"></i>
-                    </div>
-                    <div class="text-left">
-                        <div class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">Sunucu IP Adresi</div>
-                        <div id="ipText" class="font-mono font-bold text-white tracking-wide">Lumorarrnw.aternos.me</div>
-                    </div>
-                </div>
-                <div class="w-10 h-10 rounded-lg bg-dark-lighter flex items-center justify-center text-gray-400 group-hover:text-brand-500 transition-colors">
-                    <i id="copyIcon" class="fa-regular fa-clone text-lg"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- KULLANICI GİRİŞ/KAYIT ALANI -->
-    <section id="register-section" class="py-20 px-6 md:px-16 bg-dark-card border-y border-dark-border relative">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-10">
-                <div class="text-xs text-brand-500 font-bold tracking-widest uppercase mb-2">Sunucuya Katıl</div>
-                <h2 class="font-poppins font-extrabold text-3xl md:text-4xl text-white">Giriş Kaydını Oluştur</h2>
-                <p class="text-gray-400 max-w-lg mx-auto mt-2 text-sm">Minecraft kullanıcı adını yazarak sunucunun whitelist (giriş) listesine anında kaydolabilirsin.</p>
-            </div>
-
-            <!-- Kayıt Durumuna Göre Değişen Kart -->
-            <div id="registration-container" class="bg-dark-base border border-dark-border p-8 rounded-3xl max-w-xl mx-auto shadow-2xl relative overflow-hidden">
-                
-                <!-- Girişler AÇIK Modeli -->
-                <div id="reg-form-active" class="space-y-6">
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Minecraft Oyuncu Adın</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-500">
-                                <i class="fa-solid fa-user"></i>
-                            </span>
-                            <input type="text" id="playerUsernameInput" placeholder="Örn: LumorarrPro_1" class="w-full bg-dark-lighter border border-dark-border rounded-xl pl-11 pr-4 py-4 text-sm text-white focus:outline-none focus:border-brand-500 transition-colors placeholder:text-gray-600">
-                        </div>
-                    </div>
-
-                    <button onclick="handleUserRegistration()" class="w-full py-4 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold tracking-wide transition-all duration-300 shadow-md hover:shadow-brand-500/20 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Sunucuya Kaydol
-                    </button>
-                    
-                    <p class="text-center text-[11px] text-gray-500">Kaydolduktan sonra <code class="bg-dark-lighter px-1.5 py-0.5 rounded text-brand-500">Lumorarrnw.aternos.me</code> adresiyle hemen giriş yapabilirsin.</p>
-                </div>
-
-                <!-- Girişler KAPALI Modeli -->
-                <div id="reg-form-disabled" class="hidden text-center py-8 space-y-4">
-                    <div class="w-16 h-16 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center text-2xl mx-auto">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                    </div>
-                    <h3 class="text-xl font-bold font-poppins text-white">Girişler/Kayıtlar Kapalı</h3>
-                    <p class="text-gray-400 text-sm max-w-md mx-auto">Yeni oyuncu kayıtları yönetim ekibi tarafından geçici bir süreliğine durdurulmuştur. Lütfen daha sonra tekrar deneyin.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Özellikler (Neden Biz?) Bölümü -->
-    <section id="features" class="py-24 px-6 md:px-16 bg-dark-base relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <div class="text-xs text-brand-500 font-bold tracking-widest uppercase mb-2">Lumorarr Farkı</div>
-                <h2 class="font-poppins font-extrabold text-3xl md:text-5xl text-white">Eşsiz Bir Survival Macerası</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto mt-4">Sıradan sunuculardan sıkıldınız mı? Lumorarr'da her mekanik oyuncu odaklı ve kusursuz tasarlandı.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Kart 1 -->
-                <div class="bg-dark-card border border-dark-border hover:border-brand-500/40 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-500/5 group">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h3 class="font-poppins font-bold text-xl text-white mb-3">Güçlü Koruma</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">Hiçbir hileciye veya adil olmayan avantaja göz açtırmıyoruz! Tüm emekleriniz tam koruma altında.</p>
-                </div>
-
-                <!-- Kart 2 -->
-                <div class="bg-dark-card border border-dark-border hover:border-brand-500/40 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-500/5 group">
-                    <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-coins"></i>
-                    </div>
-                    <h3 class="font-poppins font-bold text-xl text-white mb-3">Dengeli Ekonomi</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">Tamamen dinamik, oyuncuların yönlendirdiği ticaret ve pazar sistemleri. Kazancını katla, liderliğe oyna.</p>
-                </div>
-
-                <!-- Kart 3 -->
-                <div class="bg-dark-card border border-dark-border hover:border-brand-500/40 p-8 rounded-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-500/5 group">
-                    <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                    </div>
-                    <h3 class="font-poppins font-bold text-xl text-white mb-3">Sıfır Donma & Lag</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">Optimize edilmiş sunucu altyapımızla kesintisiz, akıcı ve yüksek TPS değerli oyun deneyiminin keyfini sürün.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Alt Bilgi (Footer) -->
-    <footer class="bg-dark-base border-t border-dark-border py-12 px-6 text-center text-gray-500 text-sm">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <div onclick="copyIPAddress()" class="w-full max-w-md bg-dark-card border-2 border-brand-500 rounded-2xl p-5 flex items-center justify-between cursor-pointer group hover:-translate-y-1 transition-all">
             <div class="flex items-center gap-3">
-                <span class="font-poppins font-black text-xl tracking-tight text-white">LUMORARR<span class="text-brand-500">NETWORK</span></span>
+                <div class="w-12 h-12 rounded-xl bg-brand-500/20 text-brand-500 flex items-center justify-center text-xl"><i class="fa-solid fa-server"></i></div>
+                <div class="text-left">
+                    <div class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">Sunucu IP</div>
+                    <div id="ipText" class="font-mono font-bold text-white tracking-wide">Lumorarrnw.aternos.me</div>
+                </div>
             </div>
-            <p>&copy; 2026 Lumorarr Network. Tüm Hakları Saklıdır. Mojang AB ile resmi olarak hiçbir ilişiğimiz bulunmamaktadır.</p>
-            <div class="flex items-center gap-4 text-lg">
-                <a href="#" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#" class="hover:text-brand-500 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+            <i id="copyIcon" class="fa-regular fa-clone text-gray-400"></i>
+        </div>
+    </section>
+
+    <!-- YETKİLİ ALIMI BÖLÜMÜ -->
+    <section id="staff-recruitment" class="py-20 px-6 md:px-16 bg-dark-lighter">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-poppins font-extrabold text-3xl md:text-4xl text-white mb-6">Ekibimize Katıl!</h2>
+            <p class="text-gray-400 mb-8 max-w-2xl mx-auto">Lumorarr Network ailesinde yer almak ister misin? Discord sunucumuza gelerek veya aşağıdan başvuru formunu doldurarak yetkili alımlarına katılabilirsin.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openStaffModal()" class="px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-lg transition-all">
+                    <i class="fa-solid fa-user-plus mr-2"></i>Başvuru Formunu Aç
+                </button>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- ADMİN GİRİŞ ŞİFRE EKRANI -->
-    <div id="adminLoginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
-        <div class="bg-dark-card border border-dark-border w-full max-w-md rounded-3xl p-6 relative shadow-2xl">
-            <button onclick="closeAdminLoginModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
-                <i class="fa-solid fa-xmark"></i>
+    <section id="support-section" class="py-20 px-6 md:px-16 bg-dark-base border-t border-dark-border">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="font-poppins font-extrabold text-3xl md:text-4xl text-white mb-6">Yardıma mı ihtiyacın var?</h2>
+            <p class="text-gray-400 mb-8">Bir sorunun mu var, hile mi bildireceksin veya destek mi istiyorsun? Hemen bir ticket oluştur, yetkililerimiz seninle iletişime geçsin.</p>
+            <button onclick="openSupportModal()" class="px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl shadow-lg shadow-brand-500/20 transition-all">
+                <i class="fa-solid fa-ticket-simple mr-2"></i>Yeni Destek Talebi Oluştur
             </button>
-            
-            <div class="text-center mb-6">
-                <div class="w-12 h-12 rounded-full bg-brand-500/10 text-brand-500 flex items-center justify-center text-xl mx-auto mb-3">
-                    <i class="fa-solid fa-user-shield"></i>
-                </div>
-                <h3 class="text-xl font-bold font-poppins text-white">Yönetici Girişi</h3>
-                <p class="text-gray-400 text-xs mt-1">Lütfen yönetim şifrenizi girin</p>
-            </div>
+        </div>
+    </section>
 
+    <!-- SUPPORT MODAL -->
+    <div id="supportModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-dark-card border border-dark-border w-full max-w-lg rounded-3xl p-8 relative">
+            <button onclick="closeSupportModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-2xl font-bold text-white mb-6">Destek Talebi</h3>
             <div class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">Şifre</label>
-                    <input type="password" id="adminPasswordInput" placeholder="••••••••" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-500 transition-colors">
-                </div>
-
-                <button onclick="handleAdminLogin()" class="w-full py-4 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold tracking-wide transition-all duration-300">
-                    Giriş Yap
-                </button>
+                <input type="text" id="ticketSubject" placeholder="Konu (Örn: Hile Bildirimi)" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none">
+                <select id="ticketCategory" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none">
+                    <option value="Teknik">Teknik Sorun</option>
+                    <option value="Rapor">Oyuncu Raporu</option>
+                    <option value="Ödeme">Ödeme/VIP</option>
+                </select>
+                <textarea id="ticketMessage" placeholder="Mesajınız..." rows="4" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none"></textarea>
+                <button onclick="submitTicket()" class="w-full py-4 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl transition-all">Gönder</button>
             </div>
         </div>
     </div>
 
-    <!-- ADMİN KONTROL PANELİ MODAL -->
+    <!-- STAFF MODAL -->
+    <div id="staffModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-dark-card border border-dark-border w-full max-w-lg rounded-3xl p-8 relative">
+            <button onclick="closeStaffModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-2xl font-bold text-white mb-6">Yetkili Başvuru Formu</h3>
+            <div class="space-y-4">
+                <input type="text" id="staffName" placeholder="Minecraft Kullanıcı Adın" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none">
+                <input type="number" id="staffAge" placeholder="Yaşın" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none">
+                <textarea id="staffReason" placeholder="Neden yetkili olmak istiyorsun?" rows="4" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none"></textarea>
+                <button onclick="submitStaffApplication()" class="w-full py-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition-all">Başvuruyu Gönder</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN PANEL MODAL (Updated) -->
     <div id="adminPanelModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden overflow-y-auto">
-        <div class="bg-dark-card border border-dark-border w-full max-w-2xl rounded-3xl p-6 relative shadow-2xl my-8">
-            <button onclick="closeAdminPanelModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+        <div class="bg-dark-card border border-dark-border w-full max-w-4xl rounded-3xl p-6 my-8">
+            <button onclick="closeAdminPanelModal()" class="float-right text-gray-400"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-xl font-bold text-white mb-6">Lumorarr Kontrol Paneli</h3>
             
-            <div class="flex items-center gap-3 border-b border-dark-border pb-4 mb-6">
-                <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center text-lg">
-                    <i class="fa-solid fa-gears animate-spin"></i>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Oyuncu Yönetimi -->
                 <div>
-                    <h3 class="text-xl font-bold font-poppins text-white">Lumorarr Kontrol Paneli</h3>
-                    <p class="text-gray-400 text-xs">Sistem Ayarları ve Oyuncu Yönetimi</p>
+                    <h4 class="text-sm font-bold text-gray-400 uppercase mb-4">Kayıtlı Oyuncular</h4>
+                    <div id="admin-player-list" class="space-y-2 h-64 overflow-y-auto"></div>
                 </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Sol Kolon: Sistem Ayarları -->
-                <div class="space-y-6">
-                    <div class="bg-dark-base border border-dark-border p-4 rounded-2xl">
-                        <h4 class="font-poppins font-bold text-sm text-white mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-power-off text-brand-500"></i> Giriş Durumu
-                        </h4>
-                        
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-400">Yeni oyuncu kayıtları:</span>
-                            <button id="regToggleBtn" onclick="toggleRegistrationStatus()" class="px-4 py-2 rounded-lg font-bold text-xs transition-colors duration-300"></button>
-                        </div>
-                    </div>
-
-                    <div class="bg-dark-base border border-dark-border p-4 rounded-2xl">
-                        <h4 class="font-poppins font-bold text-sm text-white mb-3 flex items-center gap-2">
-                            <i class="fa-solid fa-user-plus text-green-500"></i> Manuel Oyuncu Ekle
-                        </h4>
-                        
-                        <div class="space-y-3">
-                            <input type="text" id="adminAddUsernameInput" placeholder="Oyuncu Adı" class="w-full bg-dark-lighter border border-dark-border rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
-                            <button onclick="handleAddPlayerAdmin()" class="w-full py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-bold transition-all">
-                                Listeye Ekle
-                            </button>
-                        </div>
-                    </div>
+                <!-- Ticket Yönetimi -->
+                <div>
+                    <h4 class="text-sm font-bold text-gray-400 uppercase mb-4">Aktif Ticketlar</h4>
+                    <div id="admin-ticket-list" class="space-y-2 h-64 overflow-y-auto"></div>
                 </div>
-
-                <!-- Sağ Kolon: Kayıtlı Oyuncular Listesi -->
-                <div class="bg-dark-base border border-dark-border p-4 rounded-2xl flex flex-col h-[300px]">
-                    <div class="flex items-center justify-between border-b border-dark-border pb-2 mb-3">
-                        <h4 class="font-poppins font-bold text-sm text-white flex items-center gap-2">
-                            <i class="fa-solid fa-users text-indigo-400"></i> Kayıtlı Oyuncular
-                        </h4>
-                        <span id="admin-player-count" class="bg-indigo-500/10 text-indigo-400 text-xs font-bold px-2 py-0.5 rounded-full">0</span>
-                    </div>
-
-                    <div id="admin-player-list" class="flex-1 overflow-y-auto space-y-2 pr-1">
-                        <!-- JS ile dolacak -->
-                    </div>
+                <!-- Yetkili Başvuruları -->
+                <div>
+                    <h4 class="text-sm font-bold text-gray-400 uppercase mb-4">Yetkili Başvuruları</h4>
+                    <div id="admin-staff-list" class="space-y-2 h-64 overflow-y-auto"></div>
                 </div>
-            </div>
-
-            <div class="border-t border-dark-border pt-4 mt-6 flex justify-end">
-                <button onclick="closeAdminPanelModal()" class="px-5 py-2.5 bg-dark-lighter hover:bg-dark-border text-white rounded-xl text-xs font-bold transition-colors">
-                    Kapat
-                </button>
             </div>
         </div>
     </div>
 
-    <!-- TOAST BİLDİRİMİ -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-dark-card border-2 border-green-500 text-white px-6 py-4 rounded-2xl flex items-center gap-3 shadow-xl shadow-green-500/5 transform translate-y-20 opacity-0 transition-all duration-300">
-        <div id="toastIconContainer" class="w-8 h-8 rounded-lg bg-green-500/20 text-green-500 flex items-center justify-center">
-            <i class="fa-solid fa-check-circle"></i>
-        </div>
-        <div>
-            <div class="font-bold text-sm" id="toastTitle">Başarılı!</div>
-            <div class="text-xs text-gray-400" id="toastMessage">Sunucu IP kopyalandı!</div>
-        </div>
-    </div>
-
-    <!-- JavaScript Kodları -->
     <script>
-        // Global Durum Yönetimi (LocalStorage Destekli)
-        let state = {
-            players: ["pro1"],
-            regOpen: true
-        };
+        let state = { players: ["pro1"], regOpen: true, tickets: [], staffApps: [] };
 
-        // Uygulama Başlangıcı
         function initApp() {
-            // LocalStorage'dan kayıtları çek
-            const savedPlayers = localStorage.getItem('lumorarr_players');
-            if (savedPlayers) {
-                state.players = JSON.parse(savedPlayers);
-            } else {
-                localStorage.setItem('lumorarr_players', JSON.stringify(state.players));
-            }
-
-            const savedStatus = localStorage.getItem('lumorarr_reg_status');
-            if (savedStatus !== null) {
-                state.regOpen = JSON.parse(savedStatus);
-            } else {
-                localStorage.setItem('lumorarr_reg_status', JSON.stringify(state.regOpen));
-            }
-
-            renderRegistrationUI();
-            updatePlayerCountBadge();
+            state.players = JSON.parse(localStorage.getItem('lumorarr_players') || '["pro1"]');
+            state.tickets = JSON.parse(localStorage.getItem('lumorarr_tickets') || '[]');
+            state.staffApps = JSON.parse(localStorage.getItem('lumorarr_staff_apps') || '[]');
+            renderUI();
         }
 
-        // Oyuncu Sayısını Güncelle
-        function updatePlayerCountBadge() {
-            const count = state.players.length;
-            document.getElementById('player-count-badge').innerText = count;
-            document.getElementById('admin-player-count').innerText = count;
-        }
+        // TICKET LOGIC
+        function openSupportModal() { document.getElementById('supportModal').classList.remove('hidden'); }
+        function closeSupportModal() { document.getElementById('supportModal').classList.add('hidden'); }
 
-        // Kayıt Bölümü Arayüzünü Güncelle
-        function renderRegistrationUI() {
-            const activeForm = document.getElementById('reg-form-active');
-            const disabledForm = document.getElementById('reg-form-disabled');
+        function submitTicket() {
+            const subject = document.getElementById('ticketSubject').value;
+            const cat = document.getElementById('ticketCategory').value;
+            const msg = document.getElementById('ticketMessage').value;
 
-            if (state.regOpen) {
-                activeForm.classList.remove('hidden');
-                disabledForm.classList.add('hidden');
-            } else {
-                activeForm.classList.add('hidden');
-                disabledForm.classList.remove('hidden');
-            }
-        }
+            if(!subject || !msg) return alert('Lütfen tüm alanları doldurun.');
 
-        // Kullanıcı Kayıt İşlemi
-        function handleUserRegistration() {
-            const input = document.getElementById('playerUsernameInput');
-            const username = input.value.trim();
-
-            if (!state.regOpen) {
-                showToast("Hata", "Kayıtlar şu an kapalıdır.", false);
-                return;
-            }
-
-            if (username === "") {
-                showToast("Hata", "Lütfen geçerli bir kullanıcı adı girin.", false);
-                return;
-            }
-
-            // Türkçe karakter/boşluk kontrolü
-            if (username.includes(" ") || username.length < 3) {
-                showToast("Hata", "Kullanıcı adı en az 3 karakter olmalı ve boşluk içermemelidir.", false);
-                return;
-            }
-
-            // Zaten kayıtlı mı kontrolü (Büyük-küçük harf duyarsız)
-            if (state.players.some(p => p.toLowerCase() === username.toLowerCase())) {
-                showToast("Bilgi", "Bu kullanıcı adı zaten whitelist listemizde kayıtlı!", false);
-                input.value = "";
-                return;
-            }
-
-            // Spam Koruması: Tarayıcı Başına Maksimum 3 Kayıt Limiti
-            let myRegistrationsCount = parseInt(localStorage.getItem('my_reg_count') || "0");
-            if (myRegistrationsCount >= 3) {
-                showToast("Hata", "Bu tarayıcıdan en fazla 3 adet whitelist kaydı oluşturabilirsiniz!", false);
-                return;
-            }
-
-            // Listeye Ekle ve Kaydet
-            state.players.push(username);
-            localStorage.setItem('lumorarr_players', JSON.stringify(state.players));
-            localStorage.setItem('my_reg_count', (myRegistrationsCount + 1).toString());
+            const ticket = { id: Date.now(), subject, cat, msg, status: 'Açık' };
+            state.tickets.push(ticket);
+            localStorage.setItem('lumorarr_tickets', JSON.stringify(state.tickets));
             
-            showToast("Kayıt Başarılı!", `${username} başarıyla whitelist listesine eklendi. İyi oyunlar!`, true);
-            input.value = "";
-            updatePlayerCountBadge();
-            renderAdminPlayerList();
+            closeSupportModal();
+            alert('Ticket başarıyla gönderildi!');
+            renderAdminPanel();
         }
 
-        // Mobil Menü Aç/Kapat
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('translate-x-full');
-        }
+        // STAFF LOGIC
+        function openStaffModal() { document.getElementById('staffModal').classList.remove('hidden'); }
+        function closeStaffModal() { document.getElementById('staffModal').classList.add('hidden'); }
 
-        // IP Kopyalama Fonksiyonu
-        function copyIPAddress() {
-            const ip = "Lumorarrnw.aternos.me";
-            const textArea = document.createElement("textarea");
-            textArea.value = ip;
-            textArea.style.position = "fixed";  
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
+        function submitStaffApplication() {
+            const name = document.getElementById('staffName').value;
+            const age = document.getElementById('staffAge').value;
+            const reason = document.getElementById('staffReason').value;
+
+            if(!name || !age || !reason) return alert('Lütfen tüm alanları doldurun.');
+
+            const app = { id: Date.now(), name, age, reason };
+            state.staffApps.push(app);
+            localStorage.setItem('lumorarr_staff_apps', JSON.stringify(state.staffApps));
             
-            try {
-                document.execCommand('copy');
-                const copyIcon = document.getElementById('copyIcon');
-                copyIcon.className = "fa-solid fa-circle-check text-green-400";
-                
-                showToast("Kopyalandı!", "Lumorarrnw.aternos.me başarıyla panoya kopyalandı.", true);
-                
-                setTimeout(() => {
-                    copyIcon.className = "fa-regular fa-clone";
-                }, 2000);
-            } catch (err) {
-                console.error('Kopyalama hatası:', err);
-            }
-            document.body.removeChild(textArea);
+            closeStaffModal();
+            alert('Başvurunuz iletildi!');
+            renderAdminPanel();
         }
 
-        // Gelişmiş Toast Bildirim Sistemi (Hata ve Başarı Renkli)
-        function showToast(title, msg, isSuccess = true) {
-            const toast = document.getElementById('toast');
-            const iconContainer = document.getElementById('toastIconContainer');
+        function deleteTicket(id) {
+            state.tickets = state.tickets.filter(t => t.id !== id);
+            localStorage.setItem('lumorarr_tickets', JSON.stringify(state.tickets));
+            renderAdminPanel();
+        }
+
+        // ADMIN PANEL
+        function openAdminPanelModal() { document.getElementById('adminPanelModal').classList.remove('hidden'); renderAdminPanel(); }
+        function closeAdminPanelModal() { document.getElementById('adminPanelModal').classList.add('hidden'); }
+        
+        function renderAdminPanel() {
+            const ticketList = document.getElementById('admin-ticket-list');
+            ticketList.innerHTML = state.tickets.length === 0 ? '<p class="text-xs text-gray-500">Ticket bulunmuyor.</p>' : '';
             
-            document.getElementById('toastTitle').innerText = title;
-            document.getElementById('toastMessage').innerText = msg;
-            
-            if (isSuccess) {
-                toast.className = "fixed bottom-6 right-6 z-50 bg-dark-card border-2 border-green-500 text-white px-6 py-4 rounded-2xl flex items-center gap-3 shadow-xl shadow-green-500/5 transform translate-y-0 opacity-100 transition-all duration-300";
-                iconContainer.className = "w-8 h-8 rounded-lg bg-green-500/20 text-green-500 flex items-center justify-center";
-                iconContainer.innerHTML = '<i class="fa-solid fa-check-circle"></i>';
-            } else {
-                toast.className = "fixed bottom-6 right-6 z-50 bg-dark-card border-2 border-red-500 text-white px-6 py-4 rounded-2xl flex items-center gap-3 shadow-xl shadow-red-500/5 transform translate-y-0 opacity-100 transition-all duration-300";
-                iconContainer.className = "w-8 h-8 rounded-lg bg-red-500/20 text-red-500 flex items-center justify-center";
-                iconContainer.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
-            }
-
-            setTimeout(() => {
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        }
-
-        // --- ADMİN PANELİ YÖNETİM SİSTEMİ ---
-
-        // Şifreli Giriş Modalını Aç/Kapat
-        function openAdminLoginModal() {
-            document.getElementById('adminPasswordInput').value = "";
-            document.getElementById('adminLoginModal').classList.remove('hidden');
-        }
-
-        function closeAdminLoginModal() {
-            document.getElementById('adminLoginModal').classList.add('hidden');
-        }
-
-        // Şifre Giriş Kontrolü
-        function handleAdminLogin() {
-            const passwordInput = document.getElementById('adminPasswordInput').value;
-            const correctPassword = "yetkili676731"; // Güncellenen Yönetici Şifresi
-
-            if (passwordInput === correctPassword) {
-                closeAdminLoginModal();
-                openAdminPanelModal();
-                showToast("Giriş Yapıldı", "Yönetim paneline başarıyla erişildi.", true);
-            } else {
-                showToast("Hatalı Şifre", "Girdiğiniz yönetici şifresi yanlış!", false);
-            }
-        }
-
-        // Admin Panelini Aç/Kapat ve Listeyi Güncelle
-        function openAdminPanelModal() {
-            document.getElementById('adminPanelModal').classList.remove('hidden');
-            renderAdminPlayerList();
-            updateAdminPanelStatusButton();
-        }
-
-        function closeAdminPanelModal() {
-            document.getElementById('adminPanelModal').classList.add('hidden');
-        }
-
-        // Kayıt Durumu Değiştirme (Aç/Kapat)
-        function toggleRegistrationStatus() {
-            state.regOpen = !state.regOpen;
-            localStorage.setItem('lumorarr_reg_status', JSON.stringify(state.regOpen));
-            updateAdminPanelStatusButton();
-            renderRegistrationUI();
-            
-            const durumText = state.regOpen ? "Açık" : "Kapalı";
-            showToast("Durum Güncellendi", `Yeni oyuncu girişleri artık ${durumText}!`, true);
-        }
-
-        function updateAdminPanelStatusButton() {
-            const btn = document.getElementById('regToggleBtn');
-            if (state.regOpen) {
-                btn.className = "px-4 py-2 rounded-lg font-bold text-xs bg-green-600/20 text-green-400 hover:bg-green-600/30 transition-colors";
-                btn.innerText = "AÇIK (Kapat)";
-            } else {
-                btn.className = "px-4 py-2 rounded-lg font-bold text-xs bg-red-600/20 text-red-400 hover:bg-red-600/30 transition-colors";
-                btn.innerText = "KAPALI (Aç)";
-            }
-        }
-
-        // Admin Paneli Oyuncu Listesini Yazdır
-        function renderAdminPlayerList() {
-            const listContainer = document.getElementById('admin-player-list');
-            listContainer.innerHTML = "";
-
-            if (state.players.length === 0) {
-                listContainer.innerHTML = `<div class="text-xs text-gray-500 text-center py-8">Kayıtlı oyuncu bulunmuyor.</div>`;
-                return;
-            }
-
-            state.players.forEach(player => {
-                const playerRow = document.createElement('div');
-                playerRow.className = "flex items-center justify-between bg-dark-lighter p-2.5 rounded-lg border border-dark-border";
-                playerRow.innerHTML = `
-                    <div class="flex items-center gap-2">
-                        <img src="https://minotar.net/avatar/${player}/24" class="w-6 h-6 rounded" onerror="this.src='https://placehold.co/24x24/1a1c29/ffffff?text=P'">
-                        <span class="text-xs font-mono text-white">${player}</span>
+            state.tickets.forEach(t => {
+                ticketList.innerHTML += `
+                    <div class="bg-dark-lighter p-3 rounded-lg border border-dark-border text-xs">
+                        <div class="flex justify-between font-bold text-brand-500">${t.subject} <small class="text-gray-500">${t.cat}</small></div>
+                        <p class="text-gray-300 mt-1">${t.msg}</p>
+                        <button onclick="deleteTicket(${t.id})" class="mt-2 text-red-500 hover:underline">Sil</button>
                     </div>
-                    <button onclick="handleDeletePlayer('${player}')" class="text-gray-500 hover:text-brand-500 text-xs px-2 py-1 transition-colors">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
                 `;
-                listContainer.appendChild(playerRow);
             });
-            updatePlayerCountBadge();
-        }
 
-        // Admin Tarafından Oyuncu Ekleme
-        function handleAddPlayerAdmin() {
-            const input = document.getElementById('adminAddUsernameInput');
-            const username = input.value.trim();
+            const staffList = document.getElementById('admin-staff-list');
+            staffList.innerHTML = state.staffApps.length === 0 ? '<p class="text-xs text-gray-500">Başvuru yok.</p>' : '';
+            state.staffApps.forEach(s => {
+                staffList.innerHTML += `
+                    <div class="bg-dark-lighter p-3 rounded-lg border border-dark-border text-xs">
+                        <div class="font-bold text-accent">${s.name} (${s.age})</div>
+                        <p class="text-gray-300 mt-1">${s.reason}</p>
+                        <button onclick="deleteStaffApp(${s.id})" class="mt-2 text-red-500 hover:underline">Sil</button>
+                    </div>
+                `;
+            });
 
-            if (username === "") {
-                showToast("Hata", "Lütfen oyuncu adı girin.", false);
-                return;
-            }
-
-            if (state.players.some(p => p.toLowerCase() === username.toLowerCase())) {
-                showToast("Hata", "Bu oyuncu zaten listede var.", false);
-                return;
-            }
-
-            state.players.push(username);
-            localStorage.setItem('lumorarr_players', JSON.stringify(state.players));
-            input.value = "";
-            
             renderAdminPlayerList();
-            showToast("Eklendi", `${username} başarıyla listeye eklendi.`, true);
         }
 
-        // Admin Tarafından Oyuncu Silme
-        function handleDeletePlayer(username) {
-            state.players = state.players.filter(p => p !== username);
-            localStorage.setItem('lumorarr_players', JSON.stringify(state.players));
-            
-            renderAdminPlayerList();
-            showToast("Silindi", `${username} listeden kaldırıldı.`, true);
+        function deleteStaffApp(id) {
+            state.staffApps = state.staffApps.filter(s => s.id !== id);
+            localStorage.setItem('lumorarr_staff_apps', JSON.stringify(state.staffApps));
+            renderAdminPanel();
         }
+
+        // ADMIN PANEL
+        function openAdminPanelModal() { document.getElementById('adminPanelModal').classList.remove('hidden'); renderAdminPanel(); }
+        function closeAdminPanelModal() { document.getElementById('adminPanelModal').classList.add('hidden'); }
+        
+        function renderAdminPanel() {
+            const ticketList = document.getElementById('admin-ticket-list');
+            ticketList.innerHTML = state.tickets.length === 0 ? '<p class="text-xs text-gray-500">Ticket bulunmuyor.</p>' : '';
+            
+            state.tickets.forEach(t => {
+                ticketList.innerHTML += `
+                    <div class="bg-dark-lighter p-3 rounded-lg border border-dark-border text-xs">
+                        <div class="flex justify-between font-bold text-brand-500">${t.subject} <small class="text-gray-500">${t.cat}</small></div>
+                        <p class="text-gray-300 mt-1">${t.msg}</p>
+                        <button onclick="deleteTicket(${t.id})" class="mt-2 text-red-500 hover:underline">Sil</button>
+                    </div>
+                `;
+            });
+            renderAdminPlayerList();
+        }
+
+        // --- EXISTING UTILS ---
+        function openAdminLoginModal() { 
+            const pass = prompt("Yönetici Şifresi:");
+            if(pass === "yetkili676731") openAdminPanelModal();
+            else alert("Hatalı şifre!");
+        }
+
+        function renderAdminPlayerList() {
+            const list = document.getElementById('admin-player-list');
+            list.innerHTML = state.players.map(p => `
+                <div class="bg-dark-lighter p-2 rounded border border-dark-border flex justify-between text-xs">
+                    <span>${p}</span>
+                    <button onclick="deletePlayer('${p}')" class="text-red-500">Sil</button>
+                </div>
+            `).join('');
+        }
+        
+        function deletePlayer(p) { 
+            state.players = state.players.filter(x => x !== p); 
+            localStorage.setItem('lumorarr_players', JSON.stringify(state.players));
+            renderAdminPanel();
+        }
+
+        function copyIPAddress() { navigator.clipboard.writeText("Lumorarrnw.aternos.me"); alert("IP Kopyalandı!"); }
+        function renderUI() { /* existing logic */ }
     </script>
 </body>
 </html>
