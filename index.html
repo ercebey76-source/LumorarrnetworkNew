@@ -433,20 +433,29 @@
                 return;
             }
 
-            // Zaten kayıtlı mı kontrolü
+            // Zaten kayıtlı mı kontrolü (Büyük-küçük harf duyarsız)
             if (state.players.some(p => p.toLowerCase() === username.toLowerCase())) {
-                showToast("Bilgi", "Bu kullanıcı adı zaten whitelist listemizde kayıtlı!", true);
+                showToast("Bilgi", "Bu kullanıcı adı zaten whitelist listemizde kayıtlı!", false);
                 input.value = "";
+                return;
+            }
+
+            // Spam Koruması: Tarayıcı Başına Maksimum 3 Kayıt Limiti
+            let myRegistrationsCount = parseInt(localStorage.getItem('my_reg_count') || "0");
+            if (myRegistrationsCount >= 3) {
+                showToast("Hata", "Bu tarayıcıdan en fazla 3 adet whitelist kaydı oluşturabilirsiniz!", false);
                 return;
             }
 
             // Listeye Ekle ve Kaydet
             state.players.push(username);
             localStorage.setItem('lumorarr_players', JSON.stringify(state.players));
+            localStorage.setItem('my_reg_count', (myRegistrationsCount + 1).toString());
             
             showToast("Kayıt Başarılı!", `${username} başarıyla whitelist listesine eklendi. İyi oyunlar!`, true);
             input.value = "";
             updatePlayerCountBadge();
+            renderAdminPlayerList();
         }
 
         // Mobil Menü Aç/Kapat
