@@ -20,19 +20,8 @@
                         poppins: ['Poppins', 'sans-serif'],
                     },
                     colors: {
-                        brand: {
-                            50: '#f5f3ff',
-                            100: '#ede9fe',
-                            500: '#8b5cf6',
-                            600: '#7c3aed',
-                            900: '#5b21b6',
-                        },
-                        dark: {
-                            base: '#0b0c10',
-                            card: '#12131c',
-                            lighter: '#1a1c29',
-                            border: '#25283b'
-                        },
+                        brand: { 50: '#f5f3ff', 100: '#ede9fe', 500: '#8b5cf6', 600: '#7c3aed', 900: '#5b21b6' },
+                        dark: { base: '#0b0c10', card: '#12131c', lighter: '#1a1c29', border: '#25283b' },
                         accent: '#00f0ff'
                     }
                 }
@@ -66,7 +55,7 @@
         </ul>
 
         <div class="flex items-center gap-4">
-            <button onclick="openAdminLoginModal()" class="px-5 py-2.5 rounded-lg bg-dark-lighter border border-dark-border hover:border-brand-500 text-sm font-bold text-white transition-all">
+            <button onclick="document.getElementById('adminLoginModal').classList.remove('hidden')" class="px-5 py-2.5 rounded-lg bg-dark-lighter border border-dark-border hover:border-brand-500 text-sm font-bold text-white transition-all">
                 <i class="fa-solid fa-lock-open mr-2 text-brand-500"></i>Yönetici
             </button>
         </div>
@@ -88,7 +77,6 @@
         </div>
     </section>
 
-    <!-- ÖZELLİKLER BÖLÜMÜ -->
     <section id="features" class="py-20 px-6 md:px-16 bg-dark-base">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-center font-poppins font-extrabold text-3xl md:text-4xl text-white mb-16">Neden Biz?</h2>
@@ -112,7 +100,6 @@
         </div>
     </section>
 
-    <!-- YETKİLİ ALIMI BÖLÜMÜ -->
     <section id="staff-recruitment" class="py-20 px-6 md:px-16 bg-dark-lighter">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="font-poppins font-extrabold text-3xl md:text-4xl text-white mb-6">Ekibimize Katıl!</h2>
@@ -135,7 +122,8 @@
         </div>
     </section>
 
-    <!-- SUPPORT MODAL -->
+    <div id="notificationToast" class="fixed top-20 right-5 z-[100] bg-brand-500 text-white px-6 py-3 rounded-xl shadow-2xl hidden transition-all duration-300"></div>
+
     <div id="supportModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
         <div class="bg-dark-card border border-dark-border w-full max-w-lg rounded-3xl p-8 relative">
             <button onclick="closeSupportModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
@@ -153,7 +141,15 @@
         </div>
     </div>
 
-    <!-- STAFF MODAL -->
+    <div id="adminLoginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-dark-card border border-dark-border w-full max-w-sm rounded-3xl p-8 relative">
+            <button onclick="document.getElementById('adminLoginModal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-2xl font-bold text-white mb-6">Yönetici Girişi</h3>
+            <input type="password" id="adminPass" placeholder="Şifre" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white mb-4">
+            <button onclick="checkAdminLogin()" class="w-full py-3 bg-brand-500 rounded-xl text-white font-bold">Giriş Yap</button>
+        </div>
+    </div>
+
     <div id="staffModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
         <div class="bg-dark-card border border-dark-border w-full max-w-lg rounded-3xl p-8 relative">
             <button onclick="closeStaffModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
@@ -167,24 +163,19 @@
         </div>
     </div>
 
-    <!-- ADMIN PANEL MODAL (Updated) -->
     <div id="adminPanelModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden overflow-y-auto">
         <div class="bg-dark-card border border-dark-border w-full max-w-4xl rounded-3xl p-6 my-8">
             <button onclick="closeAdminPanelModal()" class="float-right text-gray-400"><i class="fa-solid fa-xmark"></i></button>
             <h3 class="text-xl font-bold text-white mb-6">Lumorarr Kontrol Paneli</h3>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Oyuncu Yönetimi -->
                 <div>
                     <h4 class="text-sm font-bold text-gray-400 uppercase mb-4">Kayıtlı Oyuncular</h4>
                     <div id="admin-player-list" class="space-y-2 h-64 overflow-y-auto"></div>
                 </div>
-                <!-- Ticket Yönetimi -->
                 <div>
                     <h4 class="text-sm font-bold text-gray-400 uppercase mb-4">Aktif Ticketlar</h4>
                     <div id="admin-ticket-list" class="space-y-2 h-64 overflow-y-auto"></div>
                 </div>
-                <!-- Yetkili Başvuruları -->
                 <div>
                     <h4 class="text-sm font-bold text-gray-400 uppercase mb-4">Yetkili Başvuruları</h4>
                     <div id="admin-staff-list" class="space-y-2 h-64 overflow-y-auto"></div>
@@ -194,16 +185,22 @@
     </div>
 
     <script>
-        let state = { players: ["pro1"], regOpen: true, tickets: [], staffApps: [] };
+        let state = { players: ["pro1"], tickets: [], staffApps: [] };
+
+        function showNotification(msg) {
+            const el = document.getElementById('notificationToast');
+            el.textContent = msg;
+            el.classList.remove('hidden');
+            setTimeout(() => el.classList.add('hidden'), 3000);
+        }
 
         function initApp() {
             state.players = JSON.parse(localStorage.getItem('lumorarr_players') || '["pro1"]');
             state.tickets = JSON.parse(localStorage.getItem('lumorarr_tickets') || '[]');
             state.staffApps = JSON.parse(localStorage.getItem('lumorarr_staff_apps') || '[]');
-            renderUI();
+            renderAdminPanel();
         }
 
-        // TICKET LOGIC
         function openSupportModal() { document.getElementById('supportModal').classList.remove('hidden'); }
         function closeSupportModal() { document.getElementById('supportModal').classList.add('hidden'); }
 
@@ -211,19 +208,17 @@
             const subject = document.getElementById('ticketSubject').value;
             const cat = document.getElementById('ticketCategory').value;
             const msg = document.getElementById('ticketMessage').value;
-
-            if(!subject || !msg) return alert('Lütfen tüm alanları doldurun.');
-
-            const ticket = { id: Date.now(), subject, cat, msg, status: 'Açık' };
+            if(!subject || !msg) return showNotification('Lütfen tüm alanları doldurun!');
+            
+            const ticket = { id: Date.now(), subject, cat, msg, status: 'Açık', replies: [] };
             state.tickets.push(ticket);
             localStorage.setItem('lumorarr_tickets', JSON.stringify(state.tickets));
             
             closeSupportModal();
-            alert('Ticket başarıyla gönderildi!');
+            showNotification('Ticket başarıyla gönderildi!');
             renderAdminPanel();
         }
 
-        // STAFF LOGIC
         function openStaffModal() { document.getElementById('staffModal').classList.remove('hidden'); }
         function closeStaffModal() { document.getElementById('staffModal').classList.add('hidden'); }
 
@@ -231,39 +226,42 @@
             const name = document.getElementById('staffName').value;
             const age = document.getElementById('staffAge').value;
             const reason = document.getElementById('staffReason').value;
-
-            if(!name || !age || !reason) return alert('Lütfen tüm alanları doldurun.');
-
+            if(!name || !age || !reason) return showNotification('Lütfen tüm alanları doldurun!');
+            
             const app = { id: Date.now(), name, age, reason };
             state.staffApps.push(app);
             localStorage.setItem('lumorarr_staff_apps', JSON.stringify(state.staffApps));
             
             closeStaffModal();
-            alert('Başvurunuz iletildi!');
+            showNotification('Başvurunuz iletildi!');
             renderAdminPanel();
         }
 
-        function deleteTicket(id) {
-            state.tickets = state.tickets.filter(t => t.id !== id);
-            localStorage.setItem('lumorarr_tickets', JSON.stringify(state.tickets));
-            renderAdminPanel();
+        function checkAdminLogin() {
+            const pass = document.getElementById('adminPass').value;
+            if(pass === "yetkili676731") {
+                document.getElementById('adminLoginModal').classList.add('hidden');
+                openAdminPanelModal();
+            } else {
+                showNotification('Hatalı şifre!');
+            }
         }
 
-        // ADMIN PANEL
         function openAdminPanelModal() { document.getElementById('adminPanelModal').classList.remove('hidden'); renderAdminPanel(); }
         function closeAdminPanelModal() { document.getElementById('adminPanelModal').classList.add('hidden'); }
         
         function renderAdminPanel() {
+            // Re-sync from LocalStorage
+            state.tickets = JSON.parse(localStorage.getItem('lumorarr_tickets') || '[]');
+            state.staffApps = JSON.parse(localStorage.getItem('lumorarr_staff_apps') || '[]');
+            
             const ticketList = document.getElementById('admin-ticket-list');
-            ticketList.innerHTML = state.tickets.length === 0 ? '<p class="text-xs text-gray-500">Ticket bulunmuyor.</p>' : '';
+            ticketList.innerHTML = state.tickets.length === 0 ? '<p class="text-xs text-gray-500 italic">Ticket bulunmuyor.</p>' : '';
             
             state.tickets.forEach(t => {
                 const repliesHtml = (t.replies || []).map(r => `
                     <div class="mt-2 p-3 bg-dark-base rounded-lg border border-brand-500/20 text-xs">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-[10px] bg-brand-500 text-white px-1.5 py-0.5 rounded">Kurucu</span>
-                            <span class="font-bold text-brand-500">Lumorarr</span>
-                        </div>
+                        <p class="font-bold text-brand-500 mb-1">[Kurucu] Lumorarr</p>
                         <p class="text-white">${r}</p>
                     </div>
                 `).join('');
@@ -275,7 +273,6 @@
                                 <span class="block text-[10px] text-gray-500 uppercase tracking-wider font-bold">${t.cat}</span>
                                 <span class="font-bold text-white">${t.subject}</span>
                             </div>
-                            <span class="text-[10px] text-gray-400">${new Date(t.id).toLocaleDateString()}</span>
                         </div>
                         <p class="text-gray-300 text-sm mb-3 bg-dark-card p-2 rounded">${t.msg}</p>
                         ${repliesHtml}
@@ -289,44 +286,13 @@
                     </div>
                 `;
             });
-            renderAdminPlayerList();
-            renderAdminStaffList(); // Yeni eklenen satır
-        }
-
-        function replyToTicket(id) {
-            const input = document.getElementById(`reply-${id}`);
-            if(!input.value) return;
             
-            const ticket = state.tickets.find(t => t.id === id);
-            if(!ticket.replies) ticket.replies = [];
-            
-            ticket.replies.push(input.value);
-            localStorage.setItem('lumorarr_tickets', JSON.stringify(state.tickets));
-            renderAdminPanel();
+            renderAdminStaffList();
         }
 
-        // --- EXISTING UTILS ---
-        function openAdminLoginModal() { 
-            const pass = prompt("Yönetici Şifresi:");
-            if(pass === "yetkili676731") openAdminPanelModal();
-            else alert("Hatalı şifre!");
-        }
-
-        function renderAdminPlayerList() {
-            const list = document.getElementById('admin-player-list');
-            list.innerHTML = state.players.map(p => `
-                <div class="bg-dark-lighter p-2 rounded border border-dark-border flex justify-between text-xs">
-                    <span>${p}</span>
-                    <button onclick="deletePlayer('${p}')" class="text-red-500">Sil</button>
-                </div>
-            `).join('');
-        }
-
-        // --- YENİ EKLENEN: Başvuru Listeleme ---
         function renderAdminStaffList() {
             const staffList = document.getElementById('admin-staff-list');
-            staffList.innerHTML = state.staffApps.length === 0 ? '<p class="text-xs text-gray-500">Başvuru bulunmuyor.</p>' : '';
-            
+            staffList.innerHTML = state.staffApps.length === 0 ? '<p class="text-xs text-gray-500 italic">Başvuru bulunmuyor.</p>' : '';
             state.staffApps.forEach(s => {
                 staffList.innerHTML += `
                     <div class="bg-dark-lighter p-3 rounded-xl border border-dark-border mb-3 text-xs">
@@ -338,20 +304,32 @@
             });
         }
 
+        function replyToTicket(id) {
+            const input = document.getElementById(`reply-${id}`);
+            if(!input.value) return;
+            const ticket = state.tickets.find(t => t.id === id);
+            if(!ticket.replies) ticket.replies = [];
+            ticket.replies.push(input.value);
+            localStorage.setItem('lumorarr_tickets', JSON.stringify(state.tickets));
+            renderAdminPanel();
+        }
+
+        function deleteTicket(id) {
+            state.tickets = state.tickets.filter(t => t.id !== id);
+            localStorage.setItem('lumorarr_tickets', JSON.stringify(state.tickets));
+            renderAdminPanel();
+        }
+
         function deleteStaffApp(id) {
             state.staffApps = state.staffApps.filter(s => s.id !== id);
             localStorage.setItem('lumorarr_staff_apps', JSON.stringify(state.staffApps));
             renderAdminPanel();
         }
-        
-        function deletePlayer(p) { 
-            state.players = state.players.filter(x => x !== p); 
-            localStorage.setItem('lumorarr_players', JSON.stringify(state.players));
-            renderAdminPanel();
-        }
 
-        function copyIPAddress() { navigator.clipboard.writeText("Lumorarrnw.aternos.me"); alert("IP Kopyalandı!"); }
-        function renderUI() { /* existing logic */ }
+        function copyIPAddress() { 
+            navigator.clipboard.writeText("Lumorarrnw.aternos.me"); 
+            showNotification("IP adresi kopyalandı!");
+        }
     </script>
 </body>
 </html>
