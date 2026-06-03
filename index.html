@@ -50,6 +50,7 @@
         <ul class="hidden md:flex items-center gap-8 font-semibold text-gray-300">
             <li><a href="#home" class="hover:text-brand-500 transition-colors">Ana Sayfa</a></li>
             <li><a href="#features" class="hover:text-brand-500 transition-colors">Özellikler</a></li>
+            <li><a href="https://ercebey76-source.github.io/LumorarrnetworkNewTowny/" target="_blank" class="hover:text-brand-500 transition-colors">Towny Oyunumuz</a></li>
             <li><a href="#staff-recruitment" class="hover:text-brand-500 transition-colors">Yetkili Alımı</a></li>
             <li><a href="#support-section" class="hover:text-brand-500 transition-colors">Destek</a></li>
             <li><a href="https://ercebey76-source.github.io/TierList/" target="_blank" class="hover:text-brand-500 transition-colors">Tier Listimiz</a></li>
@@ -62,6 +63,7 @@
         </div>
     </nav>
 
+    <!-- ... existing code ... -->
     <section id="home" class="hero-bg min-h-screen pt-28 pb-16 px-6 md:px-16 flex flex-col justify-center items-center text-center relative">
         <h1 class="font-poppins font-black text-4xl sm:text-6xl md:text-7xl mb-6">Türkiye'nin En Efsanevi <span class="text-brand-500 neon-text-brand">Survival Serüveni</span></h1>
         <p class="text-gray-300 text-lg md:text-xl max-w-3xl mb-10">Gelişmiş klan savaşları ve kesintisiz 20 TPS performans ile gerçek Minecraft kalitesi!</p>
@@ -252,7 +254,6 @@
         function closeAdminPanelModal() { document.getElementById('adminPanelModal').classList.add('hidden'); }
         
         function renderAdminPanel() {
-            // Re-sync from LocalStorage
             state.tickets = JSON.parse(localStorage.getItem('lumorarr_tickets') || '[]');
             state.staffApps = JSON.parse(localStorage.getItem('lumorarr_staff_apps') || '[]');
             
