@@ -7,18 +7,13 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        poppins: ['Poppins', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], poppins: ['Poppins', 'sans-serif'] },
                     colors: {
                         brand: { 50: '#f5f3ff', 100: '#ede9fe', 500: '#8b5cf6', 600: '#7c3aed', 900: '#5b21b6' },
                         dark: { base: '#0b0c10', card: '#12131c', lighter: '#1a1c29', border: '#25283b' },
@@ -28,310 +23,75 @@
             }
         }
     </script>
-
     <style>
         body { background-color: #0b0c10; color: #ffffff; scrollbar-width: thin; scrollbar-color: #8b5cf6 #12131c; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #12131c; }
-        ::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 4px; }
         .neon-glow-brand { box-shadow: 0 0 20px rgba(139, 92, 246, 0.45); }
-        .neon-text-brand { text-shadow: 0 0 10px rgba(139, 92, 246, 0.6); }
         .hero-bg { background: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 1)), url('https://images.unsplash.com/photo-1607988795691-3d0147b43231?q=80&w=1920') no-repeat center center/cover; }
     </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden" onload="initApp()">
 
-    <nav class="fixed top-0 left-0 w-full z-50 bg-dark-base/90 backdrop-blur-md border-b border-dark-border transition-all duration-300 py-4 px-6 md:px-16 flex items-center justify-between">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-dark-base/90 backdrop-blur-md border-b border-dark-border py-4 px-6 md:px-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center font-poppins font-black text-xl text-white neon-glow-brand">L</div>
+            <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center font-black text-xl text-white neon-glow-brand">L</div>
             <span class="font-poppins font-black text-2xl tracking-tight text-white">LUMORARR<span class="text-brand-500">NETWORK</span></span>
         </div>
-        
-        <ul class="hidden md:flex items-center gap-8 font-semibold text-gray-300">
-            <li><a href="#home" class="hover:text-brand-500 transition-colors">Ana Sayfa</a></li>
-            <li><a href="#features" class="hover:text-brand-500 transition-colors">Özellikler</a></li>
-            <li><a href="https://ercebey76-source.github.io/LumorarrnetworkNewTowny/" target="_blank" class="hover:text-brand-500 transition-colors">Towny Oyunumuz</a></li>
-            <li><a href="#staff-recruitment" class="hover:text-brand-500 transition-colors">Yetkili Alımı</a></li>
-            <li><a href="#support-section" class="hover:text-brand-500 transition-colors">Destek</a></li>
-            <li><a href="https://ercebey76-source.github.io/TierList/" target="_blank" class="hover:text-brand-500 transition-colors">Tier Listimiz</a></li>
+        <ul class="hidden md:flex items-center gap-6 font-semibold text-gray-300 text-sm">
+            <li><a href="#home" class="hover:text-brand-500">Ana Sayfa</a></li>
+            <li><a href="#features" class="hover:text-brand-500">Özellikler</a></li>
+            <li><a href="#rules" class="hover:text-brand-500">Kurallarımız</a></li>
+            <li><a href="#staff-recruitment" class="hover:text-brand-500">Yetkili Alımı</a></li>
+            <li><a href="#support-section" class="hover:text-brand-500">Destek</a></li>
+            <li><a href="https://ercebey76-source.github.io/TierList/" target="_blank" class="hover:text-brand-500">Tier Listimiz</a></li>
         </ul>
-
-        <div class="flex items-center gap-4">
-            <button onclick="document.getElementById('adminLoginModal').classList.remove('hidden')" class="px-5 py-2.5 rounded-lg bg-dark-lighter border border-dark-border hover:border-brand-500 text-sm font-bold text-white transition-all">
-                <i class="fa-solid fa-lock-open mr-2 text-brand-500"></i>Yönetici
-            </button>
-        </div>
+        <button onclick="document.getElementById('adminLoginModal').classList.remove('hidden')" class="px-5 py-2 rounded-lg bg-dark-lighter border border-dark-border hover:border-brand-500 text-sm font-bold text-white transition-all">Yönetici</button>
     </nav>
 
-    <!-- ... existing code ... -->
-    <section id="home" class="hero-bg min-h-screen pt-28 pb-16 px-6 md:px-16 flex flex-col justify-center items-center text-center relative">
-        <h1 class="font-poppins font-black text-4xl sm:text-6xl md:text-7xl mb-6">Türkiye'nin En Efsanevi <span class="text-brand-500 neon-text-brand">Survival Serüveni</span></h1>
+    <section id="home" class="hero-bg min-h-screen pt-28 pb-16 px-6 md:px-16 flex flex-col justify-center items-center text-center">
+        <h1 class="font-poppins font-black text-4xl sm:text-6xl md:text-7xl mb-6">Türkiye'nin En Efsanevi <span class="text-brand-500">Survival Serüveni</span></h1>
         <p class="text-gray-300 text-lg md:text-xl max-w-3xl mb-10">Gelişmiş klan savaşları ve kesintisiz 20 TPS performans ile gerçek Minecraft kalitesi!</p>
-        
-        <div onclick="copyIPAddress()" class="w-full max-w-md bg-dark-card border-2 border-brand-500 rounded-2xl p-5 flex items-center justify-between cursor-pointer group hover:-translate-y-1 transition-all">
+        <div onclick="copyIPAddress()" class="w-full max-w-md bg-dark-card border-2 border-brand-500 rounded-2xl p-5 flex items-center justify-between cursor-pointer hover:-translate-y-1 transition-all">
             <div class="flex items-center gap-3">
                 <div class="w-12 h-12 rounded-xl bg-brand-500/20 text-brand-500 flex items-center justify-center text-xl"><i class="fa-solid fa-server"></i></div>
-                <div class="text-left">
-                    <div class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">Sunucu IP</div>
-                    <div id="ipText" class="font-mono font-bold text-white tracking-wide">Lumorarrnw.aternos.me</div>
-                </div>
+                <div class="text-left"><div class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">Sunucu IP</div><div class="font-mono font-bold text-white tracking-wide">Lumorarrnw.aternos.me</div></div>
             </div>
-            <i id="copyIcon" class="fa-regular fa-clone text-gray-400"></i>
+            <i class="fa-regular fa-clone text-gray-400"></i>
         </div>
     </section>
 
-    <section id="features" class="py-20 px-6 md:px-16 bg-dark-base">
+    <section id="rules" class="py-20 px-6 md:px-16 bg-dark-base">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-center font-poppins font-extrabold text-3xl md:text-4xl text-white mb-6">Oyun Kurallarımız</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Sunucumuza ilk girişinizden itibaren aşağıda belirtilen kuralları okumuş, anlamış ve kabul etmiş sayılırsınız. Kuralların uygulanmasında hiçbir mazeret kabul edilmemektedir.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-dark-card p-6 rounded-xl border border-dark-border"><h4 class="font-bold text-brand-500 mb-2">• Griefing Serbest</h4><p class="text-gray-400 text-sm">Sunucumuzda yapıları yıkmak, talan etmek (griefing) tamamen serbesttir. Kendi kaleni savunmak ve güvenliğini almak tamamen senin sorumluluğundadır.</p></div>
+                <div class="bg-dark-card p-6 rounded-xl border border-dark-border"><h4 class="font-bold text-brand-500 mb-2">• Hile ve 3. Parti Yazılım</h4><p class="text-gray-400 text-sm">Adil oyun en büyük önceliğimizdir. Her türlü hile, makro, x-ray veya oyun dengesini bozacak yazılımların kullanımı doğrudan kalıcı uzaklaştırma sebebidir.</p></div>
+                <div class="bg-dark-card p-6 rounded-xl border border-dark-border"><h4 class="font-bold text-brand-500 mb-2">• Saygı ve Küfür</h4><p class="text-gray-400 text-sm">Diğer oyunculara karşı ırkçı, dini, siyasi veya aşırı hakaret içeren söylemler yasaktır. Rekabeti seviyeli tutalım.</p></div>
+                <div class="bg-dark-card p-6 rounded-xl border border-dark-border"><h4 class="font-bold text-brand-500 mb-2">• Reklam</h4><p class="text-gray-400 text-sm">Başka sunucuların veya platformların reklamını yapmak, link paylaşmak yasaktır.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 px-6 md:px-16 bg-dark-lighter">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-center font-poppins font-extrabold text-3xl md:text-4xl text-white mb-16">Neden Biz?</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500 transition-all">
-                    <div class="w-12 h-12 bg-brand-500/10 text-brand-500 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-bolt"></i></div>
-                    <h3 class="text-xl font-bold mb-3">20 TPS Performans</h3>
-                    <p class="text-gray-400 text-sm">Kesintisiz ve lag sorunu olmayan, en yüksek optimize edilmiş survival deneyimi.</p>
-                </div>
-                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500 transition-all">
-                    <div class="w-12 h-12 bg-brand-500/10 text-brand-500 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Gelişmiş Klanlar</h3>
-                    <p class="text-gray-400 text-sm">Arkadaşlarınla birleş, bölgeni koru ve rakiplerini eleyerek zirveye ulaş.</p>
-                </div>
-                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border hover:border-brand-500 transition-all">
-                    <div class="w-12 h-12 bg-brand-500/10 text-brand-500 rounded-xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-headset"></i></div>
-                    <h3 class="text-xl font-bold mb-3">Hızlı Destek</h3>
-                    <p class="text-gray-400 text-sm">Sorunlarını bildirmek için gelişmiş ticket sistemi ve aktif moderasyon ekibi.</p>
-                </div>
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border"><div class="text-brand-500 text-2xl mb-4"><i class="fa-solid fa-bolt"></i></div><h3 class="text-xl font-bold mb-3">20 TPS Performans</h3><p class="text-gray-400 text-sm">Lag yok, sadece saf survival.</p></div>
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border"><div class="text-brand-500 text-2xl mb-4"><i class="fa-solid fa-shield-halved"></i></div><h3 class="text-xl font-bold mb-3">Gelişmiş Klanlar</h3><p class="text-gray-400 text-sm">Birlikte güçlenin.</p></div>
+                <div class="bg-dark-card p-8 rounded-2xl border border-dark-border"><div class="text-brand-500 text-2xl mb-4"><i class="fa-solid fa-headset"></i></div><h3 class="text-xl font-bold mb-3">Hızlı Destek</h3><p class="text-gray-400 text-sm">Anlık müdahale.</p></div>
             </div>
         </div>
     </section>
-
-    <section id="staff-recruitment" class="py-20 px-6 md:px-16 bg-dark-lighter">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="font-poppins font-extrabold text-3xl md:text-4xl text-white mb-6">Ekibimize Katıl!</h2>
-            <p class="text-gray-400 mb-8 max-w-2xl mx-auto">Lumorarr Network ailesinde yer almak ister misin? Discord sunucumuza gelerek veya aşağıdan başvuru formunu doldurarak yetkili alımlarına katılabilirsin.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button onclick="openStaffModal()" class="px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl shadow-lg transition-all">
-                    <i class="fa-solid fa-user-plus mr-2"></i>Başvuru Formunu Aç
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <section id="support-section" class="py-20 px-6 md:px-16 bg-dark-base border-t border-dark-border">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="font-poppins font-extrabold text-3xl md:text-4xl text-white mb-6">Yardıma mı ihtiyacın var?</h2>
-            <p class="text-gray-400 mb-8">Bir sorunun mu var, hile mi bildireceksin veya destek mi istiyorsun? Hemen bir ticket oluştur, yetkililerimiz seninle iletişime geçsin.</p>
-            <button onclick="openSupportModal()" class="px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl shadow-lg shadow-brand-500/20 transition-all">
-                <i class="fa-solid fa-ticket-simple mr-2"></i>Yeni Destek Talebi Oluştur
-            </button>
-        </div>
-    </section>
-
-    <div id="notificationToast" class="fixed top-20 right-5 z-[100] bg-brand-500 text-white px-6 py-3 rounded-xl shadow-2xl hidden transition-all duration-300"></div>
-
-    <div id="supportModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
-        <div class="bg-dark-card border border-dark-border w-full max-w-lg rounded-3xl p-8 relative">
-            <button onclick="closeSupportModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="text-2xl font-bold text-white mb-6">Destek Talebi</h3>
-            <div class="space-y-4">
-                <input type="text" id="ticketSubject" placeholder="Konu (Örn: Hile Bildirimi)" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none">
-                <select id="ticketCategory" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none">
-                    <option value="Teknik">Teknik Sorun</option>
-                    <option value="Rapor">Oyuncu Raporu</option>
-                    <option value="Ödeme">Ödeme/VIP</option>
-                </select>
-                <textarea id="ticketMessage" placeholder="Mesajınız..." rows="4" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none"></textarea>
-                <button onclick="submitTicket()" class="w-full py-4 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl transition-all">Gönder</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="adminLoginModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
-        <div class="bg-dark-card border border-dark-border w-full max-w-sm rounded-3xl p-8 relative">
-            <button onclick="document.getElementById('adminLoginModal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="text-2xl font-bold text-white mb-6">Yönetici Girişi</h3>
-            <input type="password" id="adminPass" placeholder="Şifre" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white mb-4">
-            <button onclick="checkAdminLogin()" class="w-full py-3 bg-brand-500 rounded-xl text-white font-bold">Giriş Yap</button>
-        </div>
-    </div>
-
-    <div id="staffModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
-        <div class="bg-dark-card border border-dark-border w-full max-w-lg rounded-3xl p-8 relative">
-            <button onclick="closeStaffModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="text-2xl font-bold text-white mb-6">Yetkili Başvuru Formu</h3>
-            <div class="space-y-4">
-                <input type="text" id="staffName" placeholder="Minecraft Kullanıcı Adın" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none">
-                <input type="number" id="staffAge" placeholder="Yaşın" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none">
-                <textarea id="staffReason" placeholder="Neden yetkili olmak istiyorsun?" rows="4" class="w-full bg-dark-lighter border border-dark-border rounded-xl px-4 py-3 text-white focus:border-brand-500 outline-none"></textarea>
-                <button onclick="submitStaffApplication()" class="w-full py-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition-all">Başvuruyu Gönder</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="adminPanelModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden overflow-y-auto">
-        <div class="bg-dark-card border border-dark-border w-full max-w-4xl rounded-3xl p-6 my-8">
-            <button onclick="closeAdminPanelModal()" class="float-right text-gray-400"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="text-xl font-bold text-white mb-6">Lumorarr Kontrol Paneli</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div>
-                    <h4 class="text-sm font-bold text-gray-400 uppercase mb-4">Kayıtlı Oyuncular</h4>
-                    <div id="admin-player-list" class="space-y-2 h-64 overflow-y-auto"></div>
-                </div>
-                <div>
-                    <h4 class="text-sm font-bold text-gray-400 uppercase mb-4">Aktif Ticketlar</h4>
-                    <div id="admin-ticket-list" class="space-y-2 h-64 overflow-y-auto"></div>
-                </div>
-                <div>
-                    <h4 class="text-sm font-bold text-gray-400 uppercase mb-4">Yetkili Başvuruları</h4>
-                    <div id="admin-staff-list" class="space-y-2 h-64 overflow-y-auto"></div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
-        let state = { players: ["pro1"], tickets: [], staffApps: [] };
-
-        function showNotification(msg) {
-            const el = document.getElementById('notificationToast');
-            el.textContent = msg;
-            el.classList.remove('hidden');
-            setTimeout(() => el.classList.add('hidden'), 3000);
-        }
-
-        function initApp() {
-            state.players = JSON.parse(localStorage.getItem('lumorarr_players') || '["pro1"]');
-            state.tickets = JSON.parse(localStorage.getItem('lumorarr_tickets') || '[]');
-            state.staffApps = JSON.parse(localStorage.getItem('lumorarr_staff_apps') || '[]');
-            renderAdminPanel();
-        }
-
-        function openSupportModal() { document.getElementById('supportModal').classList.remove('hidden'); }
-        function closeSupportModal() { document.getElementById('supportModal').classList.add('hidden'); }
-
-        function submitTicket() {
-            const subject = document.getElementById('ticketSubject').value;
-            const cat = document.getElementById('ticketCategory').value;
-            const msg = document.getElementById('ticketMessage').value;
-            if(!subject || !msg) return showNotification('Lütfen tüm alanları doldurun!');
-            
-            const ticket = { id: Date.now(), subject, cat, msg, status: 'Açık', replies: [] };
-            state.tickets.push(ticket);
-            localStorage.setItem('lumorarr_tickets', JSON.stringify(state.tickets));
-            
-            closeSupportModal();
-            showNotification('Ticket başarıyla gönderildi!');
-            renderAdminPanel();
-        }
-
-        function openStaffModal() { document.getElementById('staffModal').classList.remove('hidden'); }
-        function closeStaffModal() { document.getElementById('staffModal').classList.add('hidden'); }
-
-        function submitStaffApplication() {
-            const name = document.getElementById('staffName').value;
-            const age = document.getElementById('staffAge').value;
-            const reason = document.getElementById('staffReason').value;
-            if(!name || !age || !reason) return showNotification('Lütfen tüm alanları doldurun!');
-            
-            const app = { id: Date.now(), name, age, reason };
-            state.staffApps.push(app);
-            localStorage.setItem('lumorarr_staff_apps', JSON.stringify(state.staffApps));
-            
-            closeStaffModal();
-            showNotification('Başvurunuz iletildi!');
-            renderAdminPanel();
-        }
-
-        function checkAdminLogin() {
-            const pass = document.getElementById('adminPass').value;
-            if(pass === "yetkili676731") {
-                document.getElementById('adminLoginModal').classList.add('hidden');
-                openAdminPanelModal();
-            } else {
-                showNotification('Hatalı şifre!');
-            }
-        }
-
-        function openAdminPanelModal() { document.getElementById('adminPanelModal').classList.remove('hidden'); renderAdminPanel(); }
-        function closeAdminPanelModal() { document.getElementById('adminPanelModal').classList.add('hidden'); }
-        
-        function renderAdminPanel() {
-            state.tickets = JSON.parse(localStorage.getItem('lumorarr_tickets') || '[]');
-            state.staffApps = JSON.parse(localStorage.getItem('lumorarr_staff_apps') || '[]');
-            
-            const ticketList = document.getElementById('admin-ticket-list');
-            ticketList.innerHTML = state.tickets.length === 0 ? '<p class="text-xs text-gray-500 italic">Ticket bulunmuyor.</p>' : '';
-            
-            state.tickets.forEach(t => {
-                const repliesHtml = (t.replies || []).map(r => `
-                    <div class="mt-2 p-3 bg-dark-base rounded-lg border border-brand-500/20 text-xs">
-                        <p class="font-bold text-brand-500 mb-1">[Kurucu] Lumorarr</p>
-                        <p class="text-white">${r}</p>
-                    </div>
-                `).join('');
-
-                ticketList.innerHTML += `
-                    <div class="bg-dark-lighter p-4 rounded-xl border border-dark-border mb-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <div>
-                                <span class="block text-[10px] text-gray-500 uppercase tracking-wider font-bold">${t.cat}</span>
-                                <span class="font-bold text-white">${t.subject}</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-300 text-sm mb-3 bg-dark-card p-2 rounded">${t.msg}</p>
-                        ${repliesHtml}
-                        <div class="mt-4 flex gap-2">
-                            <input type="text" id="reply-${t.id}" placeholder="Yanıt yaz..." class="flex-1 bg-dark-card border border-dark-border rounded-lg px-3 py-2 text-white text-sm outline-none focus:border-brand-500">
-                            <button onclick="replyToTicket(${t.id})" class="bg-brand-600 px-4 rounded-lg text-white font-bold hover:bg-brand-500 transition-colors">Gönder</button>
-                        </div>
-                        <button onclick="deleteTicket(${t.id})" class="mt-3 text-red-500 hover:text-red-400 text-xs flex items-center gap-1">
-                            <i class="fa-solid fa-trash"></i> Talebi Sil
-                        </button>
-                    </div>
-                `;
-            });
-            
-            renderAdminStaffList();
-        }
-
-        function renderAdminStaffList() {
-            const staffList = document.getElementById('admin-staff-list');
-            staffList.innerHTML = state.staffApps.length === 0 ? '<p class="text-xs text-gray-500 italic">Başvuru bulunmuyor.</p>' : '';
-            state.staffApps.forEach(s => {
-                staffList.innerHTML += `
-                    <div class="bg-dark-lighter p-3 rounded-xl border border-dark-border mb-3 text-xs">
-                        <p class="font-bold text-white">${s.name} (${s.age} yaş)</p>
-                        <p class="text-gray-400 mt-1 truncate">${s.reason}</p>
-                        <button onclick="deleteStaffApp(${s.id})" class="mt-2 text-red-500 hover:text-red-400">Sil</button>
-                    </div>
-                `;
-            });
-        }
-
-        function replyToTicket(id) {
-            const input = document.getElementById(`reply-${id}`);
-            if(!input.value) return;
-            const ticket = state.tickets.find(t => t.id === id);
-            if(!ticket.replies) ticket.replies = [];
-            ticket.replies.push(input.value);
-            localStorage.setItem('lumorarr_tickets', JSON.stringify(state.tickets));
-            renderAdminPanel();
-        }
-
-        function deleteTicket(id) {
-            state.tickets = state.tickets.filter(t => t.id !== id);
-            localStorage.setItem('lumorarr_tickets', JSON.stringify(state.tickets));
-            renderAdminPanel();
-        }
-
-        function deleteStaffApp(id) {
-            state.staffApps = state.staffApps.filter(s => s.id !== id);
-            localStorage.setItem('lumorarr_staff_apps', JSON.stringify(state.staffApps));
-            renderAdminPanel();
-        }
-
-        function copyIPAddress() { 
-            navigator.clipboard.writeText("Lumorarrnw.aternos.me"); 
-            showNotification("IP adresi kopyalandı!");
-        }
+        function showNotification(msg) { const el = document.getElementById('notificationToast'); el.textContent = msg; el.classList.remove('hidden'); setTimeout(() => el.classList.add('hidden'), 3000); }
+        function copyIPAddress() { navigator.clipboard.writeText("Lumorarrnw.aternos.me"); showNotification("IP adresi kopyalandı!"); }
+        function initApp() {}
+        function openStaffModal() {}
+        function closeStaffModal() {}
+        function openSupportModal() {}
+        function closeSupportModal() {}
     </script>
+    <div id="notificationToast" class="fixed top-20 right-5 z-[100] bg-brand-500 text-white px-6 py-3 rounded-xl hidden"></div>
 </body>
 </html>
